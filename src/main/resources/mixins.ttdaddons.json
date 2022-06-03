@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "minVersion": "0.7",
+  "package": "com.trytodupe.ttdaddons.Mixins",
+  "refmap": "mixins.ttdaddons.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinModid"
+  ]
+}

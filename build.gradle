@@ -1,0 +1,76 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "https://maven.minecraftforge.net/"
+        }
+        maven {
+            name = "sponge"
+            url = "https://repo.spongepowered.org/maven"
+        }
+        maven {
+            name = "jitpack"
+            url = "https://jitpack.io/"
+        }
+    }
+    dependencies {
+        classpath "com.github.asbyth:ForgeGradle:6f53277"
+        classpath "com.github.LxGaming:MixinGradle:d75e32e"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'org.spongepowered.mixin'
+
+version = "1.8.9-0.0.2"
+group= "com.trytodupe.ttdaddons"
+archivesBaseName = "TtdAddons"
+
+compileJava.options.encoding = "UTF-8"
+
+minecraft {
+    version = "1.8.9-11.15.1.2318-1.8.9"
+    runDir = "run"
+    mappings = "stable_20"
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.spongepowered.org/maven/' }
+}
+
+dependencies {
+    compile('org.spongepowered:mixin:0.7.11-SNAPSHOT')
+    annotationProcessor('org.spongepowered:mixin:0.7.11-SNAPSHOT')
+}
+
+mixin {
+    add sourceSets.main, "mixins.ttdaddons.refmap.json"
+}
+
+jar {
+    manifest.attributes(
+            'Main-Class': 'TtdAddons',
+            'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+            'MixinConfigs': 'mixins.ttdaddons.json',
+            'FMLCorePluginContainsFMLMod': 'true',
+            "ForceLoadAsMod": true,
+    )
+}
+
+processResources
+{
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
