@@ -36,11 +36,18 @@ public class Commands extends CommandBase {
         String string = args[0];
         switch (string) {
             case "fill":
-                if (args.length == 2) {
-                    String name = args[1];
-                    ChestFiller.enable(name);
-                } else if (args.length == 1) ChestFiller.disable();
-                    else ChatLib.chat(getUsage());
+                if (ChestFiller.isEnabled()) ChestFiller.disable();
+                else switch (args.length) {
+                    case (2):
+                        ChestFiller.enable(args[1], false);
+                        break;
+                    case (3):
+                        ChestFiller.enable(args[1], args[2].equals("-6"));
+                        break;
+                    default:
+                        ChatLib.chat(getUsage());
+                        break;
+                }
                 break;
             default:
                 ChatLib.chat(getUsage());
@@ -50,7 +57,7 @@ public class Commands extends CommandBase {
     }
 
     private String getUsage() {
-        return "/trytodupe fill [item] - fill chests with custom item.";
+        return "/trytodupe fill [&bitem&r] <-6> - fill chests with custom item. use \"-6\" to skip 6th slot";
     }
 
     @Override

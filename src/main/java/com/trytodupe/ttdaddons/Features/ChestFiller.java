@@ -5,7 +5,6 @@ import com.trytodupe.ttdaddons.Objects.Inventory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.util.StringUtils;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -17,11 +16,15 @@ import java.util.HashSet;
 public class ChestFiller {
     public static final Minecraft mc = Minecraft.getMinecraft();
     private static Inventory openedInventory = null;
-    private static boolean enabled = false, done = false;
+    private static boolean enabled = false, done = false, six = false;
     private Thread pushingThread = null;
     private static int lastId = -1;
 
     private static String name = null;
+
+    public static boolean isEnabled() {
+        return enabled;
+    }
 
     public static void disable() {
         if (enabled) ChatLib.chat("Chest Filler &cdisabled");
@@ -29,11 +32,13 @@ public class ChestFiller {
         enabled = false;
         done = false;
         name = null;
+        six = false;
     }
 
-    public static void enable(String input) {
-        name = input;
-        ChatLib.chat("Chest Filler &aenabled");
+    public static void enable(String input1, boolean input2) {
+        name = input1;
+        six = input2;
+        ChatLib.chat("Chest Filler &aenabled&r (&b" + name + "&r)");
         enabled = true;
     }
 
@@ -77,6 +82,7 @@ public class ChestFiller {
                         boolean isEmpty = true;
                         HashSet<Slot> emptySlots = new HashSet<>();
                         for (i = 0; i < 54; i++) {
+                            if (six && i == 5) continue;
                             if (inventory.getItemInSlot(i) == null) emptySlots.add(inventory.getSlots().get(i));
                         }
                         //inv slots: 54-89
@@ -84,22 +90,22 @@ public class ChestFiller {
                             if (inventory.getItemInSlot(i) == null) continue;
                             amount = inventory.getItemInSlot(i).stackSize;
                             //if (inventory.getItemInSlot(i).getItem().equals(Item.getByNameOrId("minecraft:prismarine_crystals"))
-                            if (StringUtils.stripControlCodes(inventory.getItemInSlot(i).getDisplayName()).contains(name)
+                            if (StringUtils.stripControlCodes(inventory.getItemInSlot(i).getDisplayName()).toLowerCase().contains(name.toLowerCase())
                                     && amount >= emptySlots.size()) {
                                 isEmpty = false;
                                 break;
                             }
                         }
-                        if (emptySlots.isEmpty()) return;
+                        if (emptySlots.isEmpty() && inventory.getItemInSlot(5) != null) return;
                         if (!isEmpty) {
                             click(inventory, i, 0, 0, 0);
                             Thread.sleep(200);
                             click(inventory, -999, 5, 4, 0);
                             for (Slot slot1 : emptySlots) click(inventory, slot1.slotNumber, 5, 5, 0);
                             click(inventory, -999, 5, 6, 0);
-                            Thread.sleep(100);
-                            //click(inventory, i, 0, 0, 0);
-                            //Thread.sleep(100);
+                            Thread.sleep(50);
+                            if (inventory.getItemInSlot(5) == null) click(inventory, 5, 0, 1, 0);
+                            Thread.sleep(50);
                             mc.thePlayer.closeScreen();
                         } else {
                             ChatLib.chat("Not enough items.");
