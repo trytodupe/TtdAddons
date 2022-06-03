@@ -1,5 +1,6 @@
 package com.trytodupe.ttdaddons;
 
+import com.trytodupe.ttdaddons.Features.CameraClip;
 import com.trytodupe.ttdaddons.Features.ChestFiller;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 import net.minecraft.command.CommandBase;
@@ -33,21 +34,42 @@ public class Commands extends CommandBase {
             ChatLib.chat(getUsage());
             return;
         }
+        for (int i = 0; i < args.length; i++) args[i] = args[i].toLowerCase();
         String string = args[0];
         switch (string) {
             case "fill":
-                if (ChestFiller.isEnabled()) ChestFiller.disable();
+                if (ChestFiller.isToggled()) ChestFiller.disable();
                 else switch (args.length) {
                     case (2):
                         ChestFiller.enable(args[1], false);
                         break;
                     case (3):
-                        ChestFiller.enable(args[1], args[2].equals("-6"));
+                        if (args[2].equals("-6")) ChestFiller.enable(args[1], true);
+                        else ChatLib.chat(getUsage());
                         break;
                     default:
                         ChatLib.chat(getUsage());
                         break;
                 }
+                break;
+            case "cameraclip":
+                switch (args.length) {
+                    case (1):
+                        CameraClip.toggle();
+                        break;
+                    case (2):
+                        try {
+                           CameraClip.setDistance(Double.parseDouble(args[1]));
+                        }
+                        catch (Exception e) {
+                            ChatLib.chat("Please enter a valid number.");
+                        }
+                        break;
+                    default:
+                        ChatLib.chat(getUsage());
+                        break;
+                }
+
                 break;
             default:
                 ChatLib.chat(getUsage());
@@ -57,7 +79,8 @@ public class Commands extends CommandBase {
     }
 
     private String getUsage() {
-        return "/trytodupe fill [&bitem&r] <-6> - fill chests with custom item. use \"-6\" to skip 6th slot";
+        return "/trytodupe fill [&bitem&r] <-6> - fill chests with custom item, use \"-6\" to skip 6th slot.\n" +
+                "/trytodupe cameraClip <clipDistance>- toggle camera clip or set clip distance.";
     }
 
     @Override

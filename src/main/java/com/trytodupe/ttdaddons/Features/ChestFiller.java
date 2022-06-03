@@ -22,7 +22,7 @@ public class ChestFiller {
 
     private static String name = null;
 
-    public static boolean isEnabled() {
+    public static boolean isToggled() {
         return enabled;
     }
 
