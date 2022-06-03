@@ -15,7 +15,7 @@ public class CameraClip {
 
     public static void setDistance(double input) {
         distance = input;
-        ChatLib.chat("Camera Clip distance set to &b " + distance);
+        ChatLib.chat("Camera Clip distance set to &b" + distance);
     }
 
     public static boolean isToggled() {
