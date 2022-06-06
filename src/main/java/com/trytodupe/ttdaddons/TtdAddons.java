@@ -1,7 +1,7 @@
 package com.trytodupe.ttdaddons;
 
 import com.trytodupe.ttdaddons.Features.ChestFiller;
-import com.trytodupe.ttdaddons.Commands;
+import com.trytodupe.ttdaddons.utils.ChatLib;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -13,10 +13,22 @@ public class TtdAddons
 {
     public static final String MODID = "ttdaddons";
     public static final String VERSION = "0.0.4";
+    private static boolean debug = false;
+
+    public static void toggleDebug() {
+        debug = !debug;
+        ChatLib.chat("Debug: " + debug);
+    }
+
+    public static boolean isDebug() {
+        return debug;
+    }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(new ChestFiller());
         ClientCommandHandler.instance.registerCommand(new Commands());
     }
+
+
 }

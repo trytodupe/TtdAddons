@@ -2,6 +2,7 @@ package com.trytodupe.ttdaddons;
 
 import com.trytodupe.ttdaddons.Features.CameraClip;
 import com.trytodupe.ttdaddons.Features.ChestFiller;
+import com.trytodupe.ttdaddons.Features.GhostHand;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -69,7 +70,12 @@ public class Commands extends CommandBase {
                         ChatLib.chat(getUsage());
                         break;
                 }
-
+                break;
+            case "ghosthand":
+                GhostHand.toggle();
+                break;
+            case "debug":
+                TtdAddons.toggleDebug();
                 break;
             default:
                 ChatLib.chat(getUsage());
@@ -79,8 +85,10 @@ public class Commands extends CommandBase {
     }
 
     private String getUsage() {
-        return "/trytodupe fill [&bitem&r] <-6> - fill chests with custom item, use \"-6\" to skip 6th slot.\n" +
-                "/trytodupe cameraClip <clipDistance>- toggle camera clip or set clip distance.";
+        // <> = required arguments; [] = optional arguments.
+        return "/trytodupe fill <&bitem&r> [-6] - fill chests with custom item, use \"-6\" argument to skip 6th slot.\n" +
+                "/trytodupe cameraClip [clipDistance] - toggle camera clip or set clip distance.\n" +
+                "/trytodupe ghostHand - hit through teammates & hit through entities while holding pickaxe.";
     }
 
     @Override
