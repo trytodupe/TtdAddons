@@ -1,5 +1,6 @@
 package com.trytodupe.ttdaddons.Features;
 
+import com.trytodupe.ttdaddons.Config.ConfigHandler;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 import com.trytodupe.ttdaddons.Objects.Inventory;
 import net.minecraft.client.Minecraft;
@@ -16,30 +17,39 @@ import java.util.HashSet;
 public class ChestFiller {
     public static final Minecraft mc = Minecraft.getMinecraft();
     private static Inventory openedInventory = null;
-    private static boolean enabled = false, done = false, six = false;
+    private static boolean enabled = false, done = false;
     private Thread pushingThread = null;
     private static int lastId = -1;
-
-    private static String name = null;
-
-    public static boolean isToggled() {
-        return enabled;
-    }
 
     public static void disable() {
         if (enabled) ChatLib.chat("Chest Filler &cdisabled");
         lastId = -1;
         enabled = false;
         done = false;
-        name = null;
-        six = false;
     }
 
-    public static void enable(String input1, boolean input2) {
-        name = input1;
-        six = input2;
-        ChatLib.chat("Chest Filler &aenabled&r (&b" + name + "&r)");
+    public static void setItem(String input) {
+        ConfigHandler.chestFillerItemName = input;
+        ChatLib.chat("Chest Filler item name set to: &b" + ConfigHandler.chestFillerItemName + "&r");
+    }
+
+    public static void toggleSix() {
+        ConfigHandler.chestFiller6 = !ConfigHandler.chestFiller6;
+        if (ConfigHandler.chestFiller6) ChatLib.chat("Chest Filler six mode &aenabled");
+        else ChatLib.chat("Chest Filler six mode &cdisabled");
+    }
+
+    public static void enable() {
+        if (ConfigHandler.chestFillerItemName.equals("")) {
+            ChatLib.chat("Use /trytodupe fill [itemName] to set item first!");
+            return;
+        }
+        ChatLib.chat("Chest Filler &aenabled&r (&b" + ConfigHandler.chestFillerItemName + "&r)");
         enabled = true;
+    }
+
+    public static boolean isToggled() {
+        return enabled;
     }
 
     public void click(Inventory inventory, int slot, int mode, int button, int incrementWindowId) {
@@ -82,15 +92,14 @@ public class ChestFiller {
                         boolean isEmpty = true;
                         HashSet<Slot> emptySlots = new HashSet<>();
                         for (i = 0; i < 54; i++) {
-                            if (six && i == 5) continue;
+                            if (ConfigHandler.chestFiller6 && i == 5) continue;
                             if (inventory.getItemInSlot(i) == null) emptySlots.add(inventory.getSlots().get(i));
                         }
                         //inv slots: 54-89
                         for (i = 54; i < 90; i++) {
                             if (inventory.getItemInSlot(i) == null) continue;
                             amount = inventory.getItemInSlot(i).stackSize;
-                            //if (inventory.getItemInSlot(i).getItem().equals(Item.getByNameOrId("minecraft:prismarine_crystals"))
-                            if (StringUtils.stripControlCodes(inventory.getItemInSlot(i).getDisplayName()).toLowerCase().contains(name.toLowerCase())
+                            if (StringUtils.stripControlCodes(inventory.getItemInSlot(i).getDisplayName()).toLowerCase().contains(ConfigHandler.chestFillerItemName.toLowerCase())
                                     && amount >= emptySlots.size()) {
                                 isEmpty = false;
                                 break;

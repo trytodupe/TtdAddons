@@ -6,9 +6,6 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "MixinModid",
-    "MixinEntityRenderer2"
-  ],
-  "client": [
     "MixinEntityRenderer"
   ]
 }

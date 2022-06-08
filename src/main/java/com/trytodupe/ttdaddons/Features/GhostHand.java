@@ -1,5 +1,6 @@
 package com.trytodupe.ttdaddons.Features;
 
+import com.trytodupe.ttdaddons.Config.ConfigHandler;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 import net.minecraft.client.Minecraft;
 
@@ -9,22 +10,21 @@ public class GhostHand {
 
     public static final Minecraft mc = Minecraft.getMinecraft();
 
-    private static boolean enabled = true;
-
     public static void toggle() {
-        enabled = !enabled;
-        if (enabled) ChatLib.chat("Ghost hand &aenabled");
-        else ChatLib.chat("Ghost hand &cdisabled");
+        ConfigHandler.ghostHand = !ConfigHandler.ghostHand;
+        if (ConfigHandler.ghostHand) ChatLib.chat("Ghost Hand &aenabled");
+        else ChatLib.chat("Ghost Hand &cdisabled");
     }
 
-    public static boolean isToggled() {
-        return enabled;
+    public static void togglePickaxe() {
+        ConfigHandler.ghostHandPickaxe = !ConfigHandler.ghostHandPickaxe;
+        if (ConfigHandler.ghostHandPickaxe) ChatLib.chat("Ghost Hand pickaxe &aenabled");
+        else ChatLib.chat("Ghost Hand pickaxe &cdisabled");
     }
 
     public static boolean isTeam(Entity e) {
         Entity e2 = mc.thePlayer;
-        //add config
-        if (mc.thePlayer.getHeldItem() != null && mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("pickaxe"))
+        if (ConfigHandler.ghostHandPickaxe && mc.thePlayer.getHeldItem() != null && mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("pickaxe"))
             return true;
         if (e.getDisplayName().getUnformattedText().length() < 4)
             return false;

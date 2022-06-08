@@ -1,8 +1,11 @@
 package com.trytodupe.ttdaddons;
 
+import com.trytodupe.ttdaddons.Config.ConfigHandler;
 import com.trytodupe.ttdaddons.Features.CameraClip;
 import com.trytodupe.ttdaddons.Features.ChestFiller;
 import com.trytodupe.ttdaddons.Features.GhostHand;
+import com.trytodupe.ttdaddons.Features.Hitboxes;
+import com.trytodupe.ttdaddons.Features.Reach;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -38,15 +41,29 @@ public class Commands extends CommandBase {
         for (int i = 0; i < args.length; i++) args[i] = args[i].toLowerCase();
         String string = args[0];
         switch (string) {
-            case "fill":
-                if (ChestFiller.isToggled()) ChestFiller.disable();
-                else switch (args.length) {
-                    case (2):
-                        ChestFiller.enable(args[1], false);
+            case "debug":
+                TtdAddons.toggleDebug();
+                break;
+            case "reach":
+                switch (args.length) {
+                    case (1):
+                        Reach.toggle();
                         break;
-                    case (3):
-                        if (args[2].equals("-6")) ChestFiller.enable(args[1], true);
-                        else ChatLib.chat(getUsage());
+                    case (2):
+                        Reach.setReach(args[1]);
+                        break;
+                    default:
+                        ChatLib.chat(getUsage());
+                        break;
+                }
+                break;
+            case "hitboxes":
+                switch (args.length) {
+                    case (1):
+                        Hitboxes.toggle();
+                        break;
+                    case (2):
+                        Hitboxes.setExpand(args[1]);
                         break;
                     default:
                         ChatLib.chat(getUsage());
@@ -59,12 +76,7 @@ public class Commands extends CommandBase {
                         CameraClip.toggle();
                         break;
                     case (2):
-                        try {
-                           CameraClip.setDistance(Double.parseDouble(args[1]));
-                        }
-                        catch (Exception e) {
-                            ChatLib.chat("Please enter a valid number.");
-                        }
+                        CameraClip.setDistance(args[1]);
                         break;
                     default:
                         ChatLib.chat(getUsage());
@@ -72,23 +84,51 @@ public class Commands extends CommandBase {
                 }
                 break;
             case "ghosthand":
-                GhostHand.toggle();
+                switch (args.length) {
+                    case (1):
+                        GhostHand.toggle();
+                        break;
+                    case (2):
+                        if (args[1].equalsIgnoreCase("pickaxe")) GhostHand.togglePickaxe();
+                        break;
+                    default:
+                        ChatLib.chat(getUsage());
+                        break;
+                }
                 break;
-            case "debug":
-                TtdAddons.toggleDebug();
+            case "fill":
+                switch (args.length) {
+                    case (1):
+                        if (ChestFiller.isToggled()) ChestFiller.disable();
+                        else ChestFiller.enable();
+                        break;
+                    case (2):
+                        ChestFiller.setItem(args[1]);
+                        break;
+                    default:
+                        ChatLib.chat(getUsage());
+                        break;
+                }
+                break;
+            case "fill6":
+                ChestFiller.toggleSix();
                 break;
             default:
                 ChatLib.chat(getUsage());
                 break;
         }
-
+        ConfigHandler.saveConfig();
     }
 
     private String getUsage() {
         // <> = required arguments; [] = optional arguments.
-        return "/trytodupe fill <&bitem&r> [-6] - fill chests with custom item, use \"-6\" argument to skip 6th slot.\n" +
-                "/trytodupe cameraClip [clipDistance] - toggle camera clip or set clip distance.\n" +
-                "/trytodupe ghostHand - hit through teammates & hit through entities while holding pickaxe.";
+        return
+                "/trytodupe reach [&bdistance&r] - toggle reach or set reach distance.\n" +
+                "/trytodupe hitboxes [&bexpand&r] - toggle hitboxes or set hitboxes expand.\n" +
+                "/trytodupe cameraClip [&bclipDistance&r] - toggle camera clip or set clip distance.\n" +
+                "/trytodupe ghostHand [&b\"pickaxe\"&r] - hit through teammates & hit through entities while holding pickaxe.";
+                // "/trytodupe fill [&bitem&r] - fill chests with custom item.";
+                // "/trytodupe fill6"
     }
 
     @Override
