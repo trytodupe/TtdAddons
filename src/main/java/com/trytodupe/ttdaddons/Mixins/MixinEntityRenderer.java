@@ -1,10 +1,7 @@
 package com.trytodupe.ttdaddons.Mixins;
 
 import com.trytodupe.ttdaddons.Config.ConfigHandler;
-import com.trytodupe.ttdaddons.Features.CameraClip;
 import com.trytodupe.ttdaddons.Features.GhostHand;
-import com.trytodupe.ttdaddons.Features.Hitboxes;
-import com.trytodupe.ttdaddons.Features.Reach;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.EntityWither;
@@ -28,7 +25,7 @@ public class MixinEntityRenderer {
     private float thirdPersonDistance;
 
     private void removeEntities(List<Entity> list) {
-        if (ConfigHandler.ghostHand) list.removeIf(GhostHand::isTeam);
+        if (ConfigHandler.ghostHand) list.removeIf(GhostHand::shouldHitThrough);
     }
 
     @Redirect(method = {"orientCamera"}, at = @At(value="FIELD", target="Lnet/minecraft/client/renderer/EntityRenderer;thirdPersonDistanceTemp:F"))

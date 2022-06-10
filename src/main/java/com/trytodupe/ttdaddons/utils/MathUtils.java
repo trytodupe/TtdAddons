@@ -6,9 +6,10 @@ import net.minecraft.util.BlockPos;
 
 import javax.vecmath.Vector3d;
 
+import static com.trytodupe.ttdaddons.TtdAddons.mc;
+
 public class MathUtils {
     public static float partialTicks = 0;
-    public static final Minecraft mc = Minecraft.getMinecraft();
     public static float getX(Entity entity) {
         if (entity == null) return -10000;
         return (float) (entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * partialTicks);

@@ -22,7 +22,8 @@ public class ConfigHandler {
     public static boolean cameraClip;
     public static double cameraClipDistance;
     public static boolean ghostHand;
-    public static boolean ghostHandPickaxe;
+    public static boolean ghostHandTools;
+    public static boolean keepSprint;
     public static String chestFillerItemName;
     public static boolean chestFiller6;
 
@@ -51,7 +52,8 @@ public class ConfigHandler {
         final Property pCameraClip = config.get(CATEGORY_TtdAddons, "Camera Clip", false, "#");
         final Property pCameraClipDistance = config.get(CATEGORY_TtdAddons, "Camera Clip Distance", 4D, "number greater than 0");
         final Property pGhostHand = config.get(CATEGORY_TtdAddons, "Ghost Hand", false, "hit through teammates");
-        final Property pGhostHandPickaxe = config.get(CATEGORY_TtdAddons, "Ghost Hand Pickaxe", false, "hit through everything with pickaxe");
+        final Property pGhostHandTools = config.get(CATEGORY_TtdAddons, "Ghost Hand Tools", false, "hit through everything with tools");
+        final Property pKeepSprint = config.get(CATEGORY_TtdAddons, "Keep Sprint", false, "#");
         final Property pChestFillerItemName = config.get(CATEGORY_TtdAddons, "Chest Filler Item Name", "", "item display name");
         final Property pChestFiller6 = config.get(CATEGORY_TtdAddons, "ChestFiller6", false, "ignore this if you don't know what this is");
 
@@ -64,7 +66,8 @@ public class ConfigHandler {
         TtdAddons.add(pCameraClip.getName());
         TtdAddons.add(pCameraClipDistance.getName());
         TtdAddons.add(pGhostHand.getName());
-        TtdAddons.add(pGhostHandPickaxe.getName());
+        TtdAddons.add(pGhostHandTools.getName());
+        TtdAddons.add(pKeepSprint.getName());
         TtdAddons.add(pChestFillerItemName.getName());
         TtdAddons.add(pChestFiller6.getName());
         config.setCategoryPropertyOrder(CATEGORY_TtdAddons, TtdAddons);
@@ -78,7 +81,8 @@ public class ConfigHandler {
             cameraClip = pCameraClip.getBoolean();
             cameraClipDistance = pCameraClipDistance.getDouble();
             ghostHand = pGhostHand.getBoolean();
-            ghostHandPickaxe = pGhostHandPickaxe.getBoolean();
+            ghostHandTools = pGhostHandTools.getBoolean();
+            keepSprint = pKeepSprint.getBoolean();
             chestFillerItemName = pChestFillerItemName.getString();
             chestFiller6 = pChestFiller6.getBoolean();
         }
@@ -91,7 +95,8 @@ public class ConfigHandler {
             pCameraClip.set(cameraClip);
             pCameraClipDistance.set(cameraClipDistance);
             pGhostHand.set(ghostHand);
-            pGhostHandPickaxe.set(ghostHandPickaxe);
+            pGhostHandTools.set(ghostHandTools);
+            pKeepSprint.set(keepSprint);
             pChestFillerItemName.set(chestFillerItemName);
             pChestFiller6.set(chestFiller6);
         }

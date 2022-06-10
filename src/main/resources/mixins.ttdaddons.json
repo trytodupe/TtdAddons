@@ -5,7 +5,14 @@
   "refmap": "mixins.ttdaddons.refmap.json",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "MixinEntity",
+    "MixinEntityLivingBase",
+    "MixinEntityRenderer",
     "MixinModid",
-    "MixinEntityRenderer"
+    "MixinPlayer",
+    "MixinPlayerSP"
+  ],
+  "client": [
+    "MixinAbstractClientPlayer"
   ]
 }

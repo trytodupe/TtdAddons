@@ -13,9 +13,10 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.util.HashSet;
 
+import static com.trytodupe.ttdaddons.TtdAddons.mc;
+
 
 public class ChestFiller {
-    public static final Minecraft mc = Minecraft.getMinecraft();
     private static Inventory openedInventory = null;
     private static boolean enabled = false, done = false;
     private Thread pushingThread = null;

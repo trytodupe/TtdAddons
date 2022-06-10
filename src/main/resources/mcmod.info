@@ -2,13 +2,13 @@
 {
   "modid": "ttdaddons",
   "name": "TtdAddons",
-  "description": "",
-  "version": "0.0.5",
+  "description": "Coded by trytodupe#0969. This mod is OPENSOURCE on github. If you paid for this you got SCAMMED!",
+  "version": "0.0.6",
   "mcversion": "1.8.9",
-  "url": "",
+  "url": "https://github.com/trytodupe/TtdAddons",
   "updateUrl": "",
   "authorList": ["trytodupe"],
-  "credits": "xiaojia",
+  "credits": "xiaojia, oringo client, cheeto client",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

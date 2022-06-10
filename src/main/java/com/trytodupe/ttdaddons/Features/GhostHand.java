@@ -2,13 +2,12 @@ package com.trytodupe.ttdaddons.Features;
 
 import com.trytodupe.ttdaddons.Config.ConfigHandler;
 import com.trytodupe.ttdaddons.utils.ChatLib;
-import net.minecraft.client.Minecraft;
 
 import net.minecraft.entity.Entity;
 
-public class GhostHand {
+import static com.trytodupe.ttdaddons.TtdAddons.mc;
 
-    public static final Minecraft mc = Minecraft.getMinecraft();
+public class GhostHand {
 
     public static void toggle() {
         ConfigHandler.ghostHand = !ConfigHandler.ghostHand;
@@ -16,15 +15,19 @@ public class GhostHand {
         else ChatLib.chat("Ghost Hand &cdisabled");
     }
 
-    public static void togglePickaxe() {
-        ConfigHandler.ghostHandPickaxe = !ConfigHandler.ghostHandPickaxe;
-        if (ConfigHandler.ghostHandPickaxe) ChatLib.chat("Ghost Hand pickaxe &aenabled");
-        else ChatLib.chat("Ghost Hand pickaxe &cdisabled");
+    public static void toggleTools() {
+        ConfigHandler.ghostHandTools = !ConfigHandler.ghostHandTools;
+        if (ConfigHandler.ghostHandTools) ChatLib.chat("Ghost Hand tools &aenabled");
+        else ChatLib.chat("Ghost Hand tools &cdisabled");
     }
 
-    public static boolean isTeam(Entity e) {
+    public static boolean shouldHitThrough(Entity e) {
         Entity e2 = mc.thePlayer;
-        if (ConfigHandler.ghostHandPickaxe && mc.thePlayer.getHeldItem() != null && mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("pickaxe"))
+        if (ConfigHandler.ghostHandTools && mc.thePlayer.getHeldItem() != null &&
+                (mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("pickaxe")
+                || mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("hatchet") //who tf made axe called hatchet
+                || mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("shovel")
+                || mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("hoe")))
             return true;
         if (e.getDisplayName().getUnformattedText().length() < 4)
             return false;

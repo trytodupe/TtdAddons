@@ -16,6 +16,7 @@
 * Hitboxes
 * Camera Clip
 * Ghost Hand
+* Keep Sprint
 
 **Usage:**
 _() = aliases; <> = required arguments; [] = optional arguments._
@@ -23,4 +24,5 @@ _() = aliases; <> = required arguments; [] = optional arguments._
 * /trytodupe reach [distance] - toggle reach or set reach distance.
 * /trytodupe hitboxes [expand] - toggle hitboxes or set hitboxes expand.
 * /trytodupe cameraClip [clipDistance] - toggle camera clip or set clip distance.
-* /trytodupe ghostHand [\"pickaxe\"] - hit through teammates & hit through entities while holding pickaxe.
+* /trytodupe ghostHand [\"tools\"] - hit through teammates & hit through entities while holding tools.
+* /trytodupe keepSprint - toggle keep sprint.
