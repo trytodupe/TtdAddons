@@ -24,6 +24,9 @@ public class ConfigHandler {
     public static boolean ghostHand;
     public static boolean ghostHandTools;
     public static boolean keepSprint;
+    public static boolean speedMine;
+    public static double speedMineSpeed;
+    public static boolean noJumpDelay;
     public static String chestFillerItemName;
     public static boolean chestFiller6;
 
@@ -54,6 +57,9 @@ public class ConfigHandler {
         final Property pGhostHand = config.get(CATEGORY_TtdAddons, "Ghost Hand", false, "hit through teammates");
         final Property pGhostHandTools = config.get(CATEGORY_TtdAddons, "Ghost Hand Tools", false, "hit through everything with tools");
         final Property pKeepSprint = config.get(CATEGORY_TtdAddons, "Keep Sprint", false, "#");
+        final Property pSpeedMine = config.get(CATEGORY_TtdAddons, "Speed Mine", false, "#");
+        final Property pSpeedMineSpeed = config.get(CATEGORY_TtdAddons, "Speed Mine Speed", "1.4D", "number between 1.0 to 1.6");
+        final Property pNoJumpDelay = config.get(CATEGORY_TtdAddons, "No Jump Delay", false, "#");
         final Property pChestFillerItemName = config.get(CATEGORY_TtdAddons, "Chest Filler Item Name", "", "item display name");
         final Property pChestFiller6 = config.get(CATEGORY_TtdAddons, "ChestFiller6", false, "ignore this if you don't know what this is");
 
@@ -68,6 +74,9 @@ public class ConfigHandler {
         TtdAddons.add(pGhostHand.getName());
         TtdAddons.add(pGhostHandTools.getName());
         TtdAddons.add(pKeepSprint.getName());
+        TtdAddons.add(pSpeedMine.getName());
+        TtdAddons.add(pSpeedMineSpeed.getName());
+        TtdAddons.add(pNoJumpDelay.getName());
         TtdAddons.add(pChestFillerItemName.getName());
         TtdAddons.add(pChestFiller6.getName());
         config.setCategoryPropertyOrder(CATEGORY_TtdAddons, TtdAddons);
@@ -83,6 +92,9 @@ public class ConfigHandler {
             ghostHand = pGhostHand.getBoolean();
             ghostHandTools = pGhostHandTools.getBoolean();
             keepSprint = pKeepSprint.getBoolean();
+            speedMine = pSpeedMine.getBoolean();
+            speedMineSpeed = pSpeedMineSpeed.getDouble();
+            noJumpDelay = pNoJumpDelay.getBoolean();
             chestFillerItemName = pChestFillerItemName.getString();
             chestFiller6 = pChestFiller6.getBoolean();
         }
@@ -97,6 +109,9 @@ public class ConfigHandler {
             pGhostHand.set(ghostHand);
             pGhostHandTools.set(ghostHandTools);
             pKeepSprint.set(keepSprint);
+            pSpeedMine.set(speedMine);
+            pSpeedMineSpeed.set(speedMineSpeed);
+            pNoJumpDelay.set(noJumpDelay);
             pChestFillerItemName.set(chestFillerItemName);
             pChestFiller6.set(chestFiller6);
         }

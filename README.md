@@ -8,9 +8,22 @@
 <img src="https://img.shields.io/badge/license-CC%20BY--NC%203.0-informational" alt="license">
 </a>
 
-[![gradle-publish.yml](https://github.com/trytodupe/ttdaddons/actions/workflows/.github/workflows/gradle-publish.yml/badge.svg)](https://github.com/trytodupe/TtdAddons/actions/workflows/gradle-publish.yml)
-[![forthebadge](https://forthebadge.com/images/badges/0-percent-optimized.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/ctrl-c-ctrl-v.svg)](https://forthebadge.com)
+<!-- gradle-publish.yml -->
+<a href="https://github.com/trytodupe/TtdAddons/actions/workflows/gradle-publish.yml">
+<img src="https://github.com/trytodupe/ttdaddons/actions/workflows/.github/workflows/gradle-publish.yml/badge.svg" alt="gradle-publish.yml">
+</a>
+
+<br>  
+
+<!-- 0-percent-optimized -->
+<a href="https://forthebadge.com">
+<img src="https://forthebadge.com/images/badges/0-percent-optimized.svg" alt="0-percent-optimized">
+</a>
+
+<!-- ctrl-c-ctrl-v -->
+<a href="https://forthebadge.com">
+<img src="https://forthebadge.com/images/badges/ctrl-c-ctrl-v.svg" alt="ctrl-c-ctrl-v">
+</a>
 
 **Features:**
 * Reach
@@ -18,6 +31,8 @@
 * Camera Clip
 * Ghost Hand
 * Keep Sprint
+* Speed Mine
+* No Hit Delay
 
 **Usage:**
 _() = aliases; <> = required arguments; [] = optional arguments._
@@ -27,3 +42,8 @@ _() = aliases; <> = required arguments; [] = optional arguments._
 * /trytodupe cameraClip [clipDistance] - toggle camera clip or set clip distance.
 * /trytodupe ghostHand [\"tools\"] - hit through teammates & hit through entities while holding tools.
 * /trytodupe keepSprint - toggle keep sprint.
+* /trytodupe speedMine [speed] - toggle speed mine or set speed mine speed.
+* /trytodupe noHitDelay - toggle no hit delay.
+
+**Todo:**
+* head rotation

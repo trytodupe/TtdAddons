@@ -6,7 +6,9 @@ import com.trytodupe.ttdaddons.Features.ChestFiller;
 import com.trytodupe.ttdaddons.Features.GhostHand;
 import com.trytodupe.ttdaddons.Features.Hitboxes;
 import com.trytodupe.ttdaddons.Features.KeepSprint;
+import com.trytodupe.ttdaddons.Features.NoJumpDelay;
 import com.trytodupe.ttdaddons.Features.Reach;
+import com.trytodupe.ttdaddons.Features.SpeedMine;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
@@ -24,7 +26,7 @@ public class Commands extends CommandBase {
 
     @Override
     public ArrayList<String> getCommandAliases() {
-        ArrayList<String> res = new ArrayList<String>();
+        ArrayList<String> res = new ArrayList<>();
         res.add("ttd");
         return res;
     }
@@ -104,6 +106,22 @@ public class Commands extends CommandBase {
             case "keepsprint":
                 KeepSprint.toggle();
                 break;
+            case "speedmine":
+                switch (args.length) {
+                    case (1):
+                        SpeedMine.toggle();
+                        break;
+                    case (2):
+                        SpeedMine.setSpeed(args[1]);
+                        break;
+                    default:
+                        ChatLib.chat(getUsage());
+                        break;
+                }
+                break;
+            case "nojumpdelay":
+                NoJumpDelay.toggle();
+                break;
             case "fill":
                 switch (args.length) {
                     case (1):
@@ -131,12 +149,14 @@ public class Commands extends CommandBase {
     private String getUsage() {
         // <> = required arguments; [] = optional arguments.
         return
-                "/trytodupe reach [&bdistance&r] - toggle reach or set reach distance.\n" +
-                "/trytodupe hitboxes [&bexpand&r] - toggle hitboxes or set hitboxes expand.\n" +
-                "/trytodupe cameraClip [&bclipDistance&r] - toggle camera clip or set clip distance.\n" +
-                "/trytodupe ghostHand [&b\"tools\"&r] - hit through teammates & hit through entities while holding tools.\n" +
-                "/trytodupe keepSprint - toggle keep sprint.";
-                // "/trytodupe fill [&bitem&r] - fill chests with custom item.";
+                "/ttd reach [&bdistance&r] - toggle reach or set reach distance.\n" +
+                "/ttd hitboxes [&bexpand&r] - toggle hitboxes or set hitboxes expand.\n" +
+                "/ttd cameraClip [&bclipDistance&r] - toggle camera clip or set clip distance.\n" +
+                "/ttd ghostHand [&b\"tools\"&r] - hit through teammates & hit through entities while holding tools.\n" +
+                "/ttd keepSprint - toggle keep sprint.\n" +
+                "/ttd speedMine [&bspeed&r] - toggle speed mine or set speed mine speed.\n" +
+                "/ttd noHitDelay - toggle no hit delay.";
+                // "/trytodupe fill [&bitem&r] - fill chests with custom item."
                 // "/trytodupe fill6"
     }
 
