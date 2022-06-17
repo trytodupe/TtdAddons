@@ -7,8 +7,8 @@
 <a href="https://github.com/trytodupe/TtdAddons/blob/master/LICENSE">
 <img src="https://img.shields.io/badge/license-CC%20BY--NC%203.0-informational" alt="license">
 </a>
-[![gradle-publish.yml](https://github.com/trytodupe/ttdaddons/actions/workflows/.github/workflows/gradle-publish.yml/badge.svg)](https://github.com/trytodupe/TtdAddons/actions/workflows/gradle-publish.yml)
 
+[![gradle-publish.yml](https://github.com/trytodupe/ttdaddons/actions/workflows/.github/workflows/gradle-publish.yml/badge.svg)](https://github.com/trytodupe/TtdAddons/actions/workflows/gradle-publish.yml)
 [![forthebadge](https://forthebadge.com/images/badges/0-percent-optimized.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/ctrl-c-ctrl-v.svg)](https://forthebadge.com)
 
