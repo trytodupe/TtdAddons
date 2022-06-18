@@ -12,6 +12,12 @@
     "MixinModid",
     "MixinPlayer",
     "MixinPlayerControllerMP",
-    "MixinPlayerSP"
+    "MixinPlayerSP",
+    "PlayerSPAccessor",
+    "MixinMinecraft",
+    "MixinModelBiped",
+    "MinecraftAccessor",
+    "MixinRendererLivingEntity",
+    "MixinNetworkManager"
   ]
 }

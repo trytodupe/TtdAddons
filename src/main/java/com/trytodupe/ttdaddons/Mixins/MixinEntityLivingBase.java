@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin({EntityLivingBase.class})
-public abstract class MixinEntityLivingBase extends MixinEntity{
+public abstract class MixinEntityLivingBase extends MixinEntity {
     @Shadow
     public abstract IAttributeInstance getEntityAttribute(IAttribute paramIAttribute);
 
@@ -28,6 +28,18 @@ public abstract class MixinEntityLivingBase extends MixinEntity{
 
     @Shadow
     private int jumpTicks;
+
+    @Shadow
+    public float prevRenderYawOffset;
+
+    @Shadow
+    public float renderYawOffset;
+
+    @Shadow
+    public float prevRotationYawHead;
+
+    @Shadow
+    public float rotationYawHead;
 
     @Inject(method = {"onLivingUpdate"}, at = @At(value = "HEAD"))
     public void onLivingUpdate(CallbackInfo ci) {
