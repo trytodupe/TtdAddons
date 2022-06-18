@@ -24,7 +24,7 @@ public class MixinPlayerControllerMP {
     public float onPlayerDamageBlock(Block instance, EntityPlayer playerIn, World worldIn, BlockPos pos) {
         float hardness = instance.getPlayerRelativeBlockHardness(playerIn, worldIn, pos);
         if (ConfigHandler.speedMine)
-            hardness = (float) (hardness * ConfigHandler.speedMineSpeed > 0.8 ? 1 : hardness * ConfigHandler.speedMineSpeed);
+            hardness = (float) (hardness * ConfigHandler.speedMineSpeed > (1 - ConfigHandler.speedMineBlockBreak) ? 1 : hardness * ConfigHandler.speedMineSpeed);
         return hardness;
     }
 
