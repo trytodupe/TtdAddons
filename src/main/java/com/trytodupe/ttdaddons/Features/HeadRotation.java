@@ -17,6 +17,8 @@ public class HeadRotation {
 
     public static float clientYaw = 0.0F;
 
+    public static float prevClientPitch = 0.0F;
+
     public static float clientPitch = 0.0F;
 
     public static float serverYaw = 0.0F;
