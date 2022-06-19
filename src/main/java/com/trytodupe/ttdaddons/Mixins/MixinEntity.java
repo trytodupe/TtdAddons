@@ -33,4 +33,10 @@ public abstract class MixinEntity {
 
     @Shadow
     public double motionZ;
+
+    @Shadow
+    public float prevRotationPitch;
+
+    @Shadow
+    public float rotationPitch;
 }

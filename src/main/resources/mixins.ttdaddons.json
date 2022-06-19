@@ -12,6 +12,8 @@
     "MixinModid",
     "MixinPlayer",
     "MixinPlayerControllerMP",
-    "MixinPlayerSP"
+    "MixinPlayerSP",
+    "MixinRendererLivingEntity",
+    "MixinNetworkManager"
   ]
 }

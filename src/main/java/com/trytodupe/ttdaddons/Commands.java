@@ -2,6 +2,7 @@ package com.trytodupe.ttdaddons;
 
 import com.trytodupe.ttdaddons.Config.ConfigHandler;
 import com.trytodupe.ttdaddons.Features.CameraClip;
+import com.trytodupe.ttdaddons.Features.HeadRotation;
 import com.trytodupe.ttdaddons.Features.ChestFiller;
 import com.trytodupe.ttdaddons.Features.GhostHand;
 import com.trytodupe.ttdaddons.Features.Hitboxes;
@@ -122,6 +123,9 @@ public class Commands extends CommandBase {
             case "nojumpdelay":
                 NoJumpDelay.toggle();
                 break;
+            case "headrotation":
+                HeadRotation.toggle();
+                break;
             case "fill":
                 switch (args.length) {
                     case (1):
@@ -155,7 +159,8 @@ public class Commands extends CommandBase {
                 "/ttd ghostHand [&b\"tools\"&r] - hit through teammates & hit through entities while holding tools.\n" +
                 "/ttd keepSprint - toggle keep sprint.\n" +
                 "/ttd speedMine [&bspeed&r] - toggle speed mine or set speed mine speed.\n" +
-                "/ttd noHitDelay - toggle no hit delay.";
+                "/ttd noHitDelay - toggle no hit delay.\n" +
+                "/ttd cameraRotation - toggle client side head rotations.";
                 // "/trytodupe fill [&bitem&r] - fill chests with custom item."
                 // "/trytodupe fill6"
     }
