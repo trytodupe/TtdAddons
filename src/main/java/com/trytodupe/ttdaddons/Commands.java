@@ -159,7 +159,7 @@ public class Commands extends CommandBase {
                 "/ttd ghostHand [&b\"tools\"&r] - hit through teammates & hit through entities while holding tools.\n" +
                 "/ttd keepSprint - toggle keep sprint.\n" +
                 "/ttd speedMine [&bspeed&r] - toggle speed mine or set speed mine speed(there are two args).\n" +
-                "/ttd noHitDelay - toggle no hit delay.\n" +
+                "/ttd noJumpDelay - toggle no jump delay.\n" +
                 "/ttd headRotation - toggle client side head rotations.";
                 // "/trytodupe fill [&bitem&r] - fill chests with custom item."
                 // "/trytodupe fill6"
