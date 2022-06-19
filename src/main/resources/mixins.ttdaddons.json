@@ -13,10 +13,6 @@
     "MixinPlayer",
     "MixinPlayerControllerMP",
     "MixinPlayerSP",
-    "PlayerSPAccessor",
-    "MixinMinecraft",
-    "MixinModelBiped",
-    "MinecraftAccessor",
     "MixinRendererLivingEntity",
     "MixinNetworkManager"
   ]
