@@ -25,7 +25,7 @@ public class SpeedMine {
             else throw new Exception();
         }
         catch (Exception e) {
-            ChatLib.chat("Please enter a boolean or a valid number between 1 to 1.6 or 0 to 0.9.");
+            ChatLib.chat("Please enter a valid number between 1 to 1.6 or 0 to 0.9.");
         }
     }
 }

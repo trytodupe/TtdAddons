@@ -60,10 +60,10 @@ public class ConfigHandler {
         final Property pGhostHandTools = config.get(CATEGORY_TtdAddons, "Ghost Hand Tools", false, "hit through everything with tools");
         final Property pKeepSprint = config.get(CATEGORY_TtdAddons, "Keep Sprint", false, "#");
         final Property pSpeedMine = config.get(CATEGORY_TtdAddons, "Speed Mine", false, "#");
-        final Property pSpeedMineSpeed = config.get(CATEGORY_TtdAddons, "Speed Mine Speed", "1.4D", "number between 1.0 to 1.6");
-        final Property pSpeedMineBlockBreak = config.get(CATEGORY_TtdAddons, "Speed Mine Block Break", "0.2D", "number between 0 to 0.9");
+        final Property pSpeedMineSpeed = config.get(CATEGORY_TtdAddons, "Speed Mine Speed", "1.3D", "number between 1.0 to 1.6");
+        final Property pSpeedMineBlockBreak = config.get(CATEGORY_TtdAddons, "Speed Mine Block Break", "0.7D", "number between 0 to 0.9");
         final Property pNoJumpDelay = config.get(CATEGORY_TtdAddons, "No Jump Delay", false, "#");
-        final Property pHeadRotation = config.get(CATEGORY_TtdAddons, "Camera Rotation", false, "rotate your head client side");
+        final Property pHeadRotation = config.get(CATEGORY_TtdAddons, "Head Rotation", false, "rotate your head client side");
         final Property pChestFillerItemName = config.get(CATEGORY_TtdAddons, "Chest Filler Item Name", "", "item display name");
         final Property pChestFiller6 = config.get(CATEGORY_TtdAddons, "ChestFiller6", false, "ignore this if you don't know what this is");
 

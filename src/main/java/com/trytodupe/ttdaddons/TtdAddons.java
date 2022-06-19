@@ -16,7 +16,7 @@ import java.io.File;
 public class TtdAddons
 {
     public static final String MODID = "ttdaddons";
-    public static final String VERSION = "0.0.7";
+    public static final String VERSION = "0.0.8";
     private static boolean debug = false;
     public static File configurationFile;
     public static final Minecraft mc = Minecraft.getMinecraft();
