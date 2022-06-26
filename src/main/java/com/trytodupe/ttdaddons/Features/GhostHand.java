@@ -27,7 +27,8 @@ public class GhostHand {
                 (mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("pickaxe")
                 || mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("hatchet") //who tf made axe called hatchet
                 || mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("shovel")
-                || mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("hoe")))
+                || mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("hoe")) &&
+                !mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("shovelDiamond"))
             return true;
         if (e.getDisplayName().getUnformattedText().length() < 4)
             return false;

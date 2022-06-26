@@ -2,6 +2,7 @@ package com.trytodupe.ttdaddons.Mixins;
 
 import com.trytodupe.ttdaddons.Config.ConfigHandler;
 import com.trytodupe.ttdaddons.Features.GhostHand;
+import com.trytodupe.ttdaddons.Features.Hitboxes;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.EntityWither;
@@ -51,13 +52,12 @@ public class MixinEntityRenderer {
 
     @Redirect(method = {"getMouseOver"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Vec3;distanceTo(Lnet/minecraft/util/Vec3;)D", ordinal = 2))
     private double distanceTo(Vec3 instance, Vec3 vec) {
-        return (ConfigHandler.reach && instance.distanceTo(vec) + (
-                ConfigHandler.hitboxes ? ConfigHandler.hitboxesExpand : 0.0D) <= ConfigHandler.reachRange) ? 2.9D : (instance
-                .distanceTo(vec) + (ConfigHandler.hitboxes ? ConfigHandler.hitboxesExpand: 0.0D));
+        return (ConfigHandler.reach && instance.distanceTo(vec) + Hitboxes.getExpand() <= ConfigHandler.reachRange) ? 2.9D : (instance
+                .distanceTo(vec) + Hitboxes.getExpand());
     }
 
     @Redirect(method = {"getMouseOver"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;getCollisionBorderSize()F"))
     private float getCollisionBorderSize(Entity instance) {
-        return (ConfigHandler.hitboxes && (instance instanceof EntityWither || instance instanceof EntityPlayer)) ? ((float)ConfigHandler.hitboxesExpand + 0.1F) : instance.getCollisionBorderSize();
+        return (ConfigHandler.hitboxes && (instance instanceof EntityWither || instance instanceof EntityPlayer)) ? ((float)Hitboxes.getExpand() + 0.1F) : instance.getCollisionBorderSize();
     }
 }

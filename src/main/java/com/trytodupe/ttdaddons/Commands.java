@@ -7,6 +7,7 @@ import com.trytodupe.ttdaddons.Features.ChestFiller;
 import com.trytodupe.ttdaddons.Features.GhostHand;
 import com.trytodupe.ttdaddons.Features.Hitboxes;
 import com.trytodupe.ttdaddons.Features.KeepSprint;
+import com.trytodupe.ttdaddons.Features.LegitSpeed;
 import com.trytodupe.ttdaddons.Features.NoJumpDelay;
 import com.trytodupe.ttdaddons.Features.Reach;
 import com.trytodupe.ttdaddons.Features.SpeedMine;
@@ -49,6 +50,7 @@ public class Commands extends CommandBase {
         switch (string) {
             case "debug":
                 if (mc.thePlayer.getHeldItem() != null) ChatLib.chat(mc.thePlayer.getHeldItem().getItem().getUnlocalizedName());
+                System.out.println(mc.thePlayer.getDisplayName().getFormattedText());
                 TtdAddons.toggleDebug();
                 break;
             case "reach":
@@ -70,7 +72,8 @@ public class Commands extends CommandBase {
                         Hitboxes.toggle();
                         break;
                     case (2):
-                        Hitboxes.setExpand(args[1]);
+                        if (args[1].equalsIgnoreCase("weapons")) Hitboxes.toggleWeaponsOnly();
+                        else Hitboxes.setExpand(args[1]);
                         break;
                     default:
                         ChatLib.chat(getUsage());
@@ -126,6 +129,9 @@ public class Commands extends CommandBase {
             case "headrotation":
                 HeadRotation.toggle();
                 break;
+            case "legitspeed":
+                LegitSpeed.toggle();
+                break;
             case "fill":
                 switch (args.length) {
                     case (1):
@@ -155,12 +161,14 @@ public class Commands extends CommandBase {
         return
                 "/ttd reach [&bdistance&r] - toggle reach or set reach distance.\n" +
                 "/ttd hitboxes [&bexpand&r] - toggle hitboxes or set hitboxes expand.\n" +
+                "/ttd hitboxes [&b\"weapons\"&r] - toggle hitboxes weapons only.\n" +
                 "/ttd cameraClip [&bclipDistance&r] - toggle camera clip or set clip distance.\n" +
                 "/ttd ghostHand [&b\"tools\"&r] - hit through teammates & hit through entities while holding tools.\n" +
                 "/ttd keepSprint - toggle keep sprint.\n" +
                 "/ttd speedMine [&bspeed&r] - toggle speed mine or set speed mine speed(there are two args).\n" +
                 "/ttd noJumpDelay - toggle no jump delay.\n" +
-                "/ttd headRotation - toggle client side head rotations.";
+                "/ttd headRotation - toggle client side head rotations.\n" +
+                "/ttd legitSpeed - toggle legit speed.";
                 // "/trytodupe fill [&bitem&r] - fill chests with custom item."
                 // "/trytodupe fill6"
     }

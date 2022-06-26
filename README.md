@@ -34,18 +34,21 @@
 * Speed Mine
 * No Jump Delay
 * Head Rotation (it rotates your body as well idk why i made it called head rotation)
+* Legit Speed
 
 **Usage:**
 _() = aliases; <> = required arguments; [] = optional arguments._
 * /trytodupe (ttd) - get usage.
 * /trytodupe reach [distance] - toggle reach or set reach distance.
 * /trytodupe hitboxes [expand] - toggle hitboxes or set hitboxes expand.
+* /trytodupe hitboxes [\"weapons\"] - toggle hitboxes weapons only.
 * /trytodupe cameraClip [clipDistance] - toggle camera clip or set clip distance.
 * /trytodupe ghostHand [\"tools\"] - hit through teammates & hit through entities while holding tools.
 * /trytodupe keepSprint - toggle keep sprint.
 * /trytodupe speedMine [speed] - toggle speed mine or set speed mine speed(there are two arguments but they do not conflict so there is just one input argument).
 * /trytodupe noJumpDelay - toggle no jump delay.
 * /trytodupe headRotation - toggle client side head rotations.
+* /trytodupe legitSpeed - toggle legit speed.
 
 **Todo:**
-* 
+* criticals

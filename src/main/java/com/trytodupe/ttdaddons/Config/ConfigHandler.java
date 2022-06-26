@@ -19,6 +19,7 @@ public class ConfigHandler {
     public static double reachRange;
     public static boolean hitboxes;
     public static double hitboxesExpand;
+    public static boolean hitboxesWeaponsOnly;
     public static boolean cameraClip;
     public static double cameraClipDistance;
     public static boolean ghostHand;
@@ -29,6 +30,7 @@ public class ConfigHandler {
     public static double speedMineBlockBreak;
     public static boolean noJumpDelay;
     public static boolean headRotation;
+    public static boolean legitSpeed;
     public static String chestFillerItemName;
     public static boolean chestFiller6;
 
@@ -54,6 +56,7 @@ public class ConfigHandler {
         final Property pReachRange = config.get(CATEGORY_TtdAddons, "Reach Range", 3D, "number between 3 to 6");
         final Property pHitboxes = config.get(CATEGORY_TtdAddons, "Hitboxes", false, "#");
         final Property pHitboxesExpand = config.get(CATEGORY_TtdAddons, "Hitboxes Expand", 0.1D, "number between 0.1 to 1");
+        final Property pHitboxesWeaponsOnly = config.get(CATEGORY_TtdAddons, "Hitboxes Weapons Only", true, "#");
         final Property pCameraClip = config.get(CATEGORY_TtdAddons, "Camera Clip", false, "#");
         final Property pCameraClipDistance = config.get(CATEGORY_TtdAddons, "Camera Clip Distance", 4D, "number greater than 0");
         final Property pGhostHand = config.get(CATEGORY_TtdAddons, "Ghost Hand", false, "hit through teammates");
@@ -64,6 +67,7 @@ public class ConfigHandler {
         final Property pSpeedMineBlockBreak = config.get(CATEGORY_TtdAddons, "Speed Mine Block Break", "0.7D", "number between 0 to 0.9");
         final Property pNoJumpDelay = config.get(CATEGORY_TtdAddons, "No Jump Delay", false, "#");
         final Property pHeadRotation = config.get(CATEGORY_TtdAddons, "Head Rotation", false, "rotate your head client side");
+        final Property pLegitSpeed = config.get(CATEGORY_TtdAddons, "Legit Speed", false, "#");
         final Property pChestFillerItemName = config.get(CATEGORY_TtdAddons, "Chest Filler Item Name", "", "item display name");
         final Property pChestFiller6 = config.get(CATEGORY_TtdAddons, "ChestFiller6", false, "ignore this if you don't know what this is");
 
@@ -73,6 +77,7 @@ public class ConfigHandler {
         TtdAddons.add(pReachRange.getName());
         TtdAddons.add(pHitboxes.getName());
         TtdAddons.add(pHitboxesExpand.getName());
+        TtdAddons.add(pHitboxesWeaponsOnly.getName());
         TtdAddons.add(pCameraClip.getName());
         TtdAddons.add(pCameraClipDistance.getName());
         TtdAddons.add(pGhostHand.getName());
@@ -83,6 +88,7 @@ public class ConfigHandler {
         TtdAddons.add(pSpeedMineBlockBreak.getName());
         TtdAddons.add(pNoJumpDelay.getName());
         TtdAddons.add(pHeadRotation.getName());
+        TtdAddons.add(pLegitSpeed.getName());
         TtdAddons.add(pChestFillerItemName.getName());
         TtdAddons.add(pChestFiller6.getName());
         config.setCategoryPropertyOrder(CATEGORY_TtdAddons, TtdAddons);
@@ -93,6 +99,7 @@ public class ConfigHandler {
             reachRange = pReachRange.getDouble();
             hitboxes = pHitboxes.getBoolean();
             hitboxesExpand = pHitboxesExpand.getDouble();
+            hitboxesWeaponsOnly = pHitboxesWeaponsOnly.getBoolean();
             cameraClip = pCameraClip.getBoolean();
             cameraClipDistance = pCameraClipDistance.getDouble();
             ghostHand = pGhostHand.getBoolean();
@@ -103,6 +110,7 @@ public class ConfigHandler {
             speedMineBlockBreak = pSpeedMineBlockBreak.getDouble();
             noJumpDelay = pNoJumpDelay.getBoolean();
             headRotation = pHeadRotation.getBoolean();
+            legitSpeed = pLegitSpeed.getBoolean();
             chestFillerItemName = pChestFillerItemName.getString();
             chestFiller6 = pChestFiller6.getBoolean();
         }
@@ -112,6 +120,7 @@ public class ConfigHandler {
             pReachRange.set(reachRange);
             pHitboxes.set(hitboxes);
             pHitboxesExpand.set(hitboxesExpand);
+            pHitboxesWeaponsOnly.set(hitboxesWeaponsOnly);
             pCameraClip.set(cameraClip);
             pCameraClipDistance.set(cameraClipDistance);
             pGhostHand.set(ghostHand);
@@ -122,6 +131,7 @@ public class ConfigHandler {
             pSpeedMineBlockBreak.set(speedMineBlockBreak);
             pNoJumpDelay.set(noJumpDelay);
             pHeadRotation.set(headRotation);
+            pLegitSpeed.set(legitSpeed);
             pChestFillerItemName.set(chestFillerItemName);
             pChestFiller6.set(chestFiller6);
         }

@@ -2,6 +2,7 @@ package com.trytodupe.ttdaddons;
 
 import com.trytodupe.ttdaddons.Config.ConfigHandler;
 import com.trytodupe.ttdaddons.Features.ChestFiller;
+import com.trytodupe.ttdaddons.Features.LegitSpeed;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.ClientCommandHandler;
@@ -11,6 +12,8 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import java.io.File;
+
+import static com.trytodupe.ttdaddons.Config.ConfigHandler.legitSpeed;
 
 @Mod(modid = TtdAddons.MODID, version = TtdAddons.VERSION)
 public class TtdAddons
@@ -38,6 +41,7 @@ public class TtdAddons
     @EventHandler
     public void Init(FMLPreInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(new ChestFiller());
+        MinecraftForge.EVENT_BUS.register(new LegitSpeed());
         ClientCommandHandler.instance.registerCommand(new Commands());
     }
 }
