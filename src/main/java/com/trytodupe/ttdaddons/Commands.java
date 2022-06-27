@@ -16,6 +16,7 @@ import com.trytodupe.ttdaddons.utils.ChatLib;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.util.StringUtils;
 
 import java.util.ArrayList;
 
@@ -52,6 +53,8 @@ public class Commands extends CommandBase {
             case "debug":
                 if (mc.thePlayer.getHeldItem() != null) ChatLib.chat(mc.thePlayer.getHeldItem().getItem().getUnlocalizedName());
                 System.out.println(mc.thePlayer.getDisplayName().getFormattedText());
+                System.out.println(mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1).getDisplayName());
+
                 TtdAddons.toggleDebug();
                 break;
             case "reach":

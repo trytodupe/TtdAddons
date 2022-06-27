@@ -4,6 +4,7 @@ import com.trytodupe.ttdaddons.Config.ConfigHandler;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.util.StringUtils;
 
 import static com.trytodupe.ttdaddons.TtdAddons.mc;
 
@@ -32,10 +33,22 @@ public class GhostHand {
             return true;
         if (e.getDisplayName().getUnformattedText().length() < 4)
             return false;
-        if (e.getDisplayName().getFormattedText().charAt(2) == '§' && e2.getDisplayName().getFormattedText().charAt(2) == '§')
-            return (e.getDisplayName().getFormattedText().charAt(3) == e2.getDisplayName().getFormattedText().charAt(3));
-        else if (e.getDisplayName().getFormattedText().charAt(0) == '§' && e2.getDisplayName().getFormattedText().charAt(2) == '§' && e.getDisplayName().getFormattedText().charAt(1) != 'r')
-            return (e.getDisplayName().getFormattedText().charAt(1) == e2.getDisplayName().getFormattedText().charAt(3));
-        return false;
+
+        char color1 = ' ', color2 = ' ';
+        String title;
+        if (mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1) == null) title = " ";
+        else title = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1).getDisplayName();
+
+        if (e.getDisplayName().getFormattedText().charAt(2) == '§')
+            color1 = e.getDisplayName().getFormattedText().charAt(3);
+        else if (e.getDisplayName().getFormattedText().charAt(0) == '§' && e.getDisplayName().getFormattedText().charAt(1) != 'r')
+            color1 = e.getDisplayName().getFormattedText().charAt(1);
+
+        if (e2.getDisplayName().getFormattedText().charAt(2) == '§')
+            color2 = e2.getDisplayName().getFormattedText().charAt(3);
+        else if (e2.getDisplayName().getFormattedText().charAt(0) == '§' && e2.getDisplayName().getFormattedText().charAt(2) != '§' && e2.getDisplayName().getFormattedText().charAt(1) == 'r' && title.charAt(0) == '§')
+            color2 = title.charAt(1);
+
+        return color1 != ' ' && color2 != ' ' && color1 == color2;
     }
 }
