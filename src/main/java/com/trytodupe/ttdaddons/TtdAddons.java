@@ -3,6 +3,7 @@ package com.trytodupe.ttdaddons;
 import com.trytodupe.ttdaddons.Config.ConfigHandler;
 import com.trytodupe.ttdaddons.Features.ChestFiller;
 import com.trytodupe.ttdaddons.Features.LegitSpeed;
+import com.trytodupe.ttdaddons.Features.NoSlow;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.ClientCommandHandler;
@@ -19,7 +20,7 @@ import static com.trytodupe.ttdaddons.Config.ConfigHandler.legitSpeed;
 public class TtdAddons
 {
     public static final String MODID = "ttdaddons";
-    public static final String VERSION = "0.0.8";
+    public static final String VERSION = "0.0.9";
     private static boolean debug = false;
     public static File configurationFile;
     public static final Minecraft mc = Minecraft.getMinecraft();
