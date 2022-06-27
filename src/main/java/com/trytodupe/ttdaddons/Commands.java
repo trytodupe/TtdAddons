@@ -9,6 +9,7 @@ import com.trytodupe.ttdaddons.Features.Hitboxes;
 import com.trytodupe.ttdaddons.Features.KeepSprint;
 import com.trytodupe.ttdaddons.Features.LegitSpeed;
 import com.trytodupe.ttdaddons.Features.NoJumpDelay;
+import com.trytodupe.ttdaddons.Features.NoSlow;
 import com.trytodupe.ttdaddons.Features.Reach;
 import com.trytodupe.ttdaddons.Features.SpeedMine;
 import com.trytodupe.ttdaddons.utils.ChatLib;
@@ -131,6 +132,9 @@ public class Commands extends CommandBase {
                 break;
             case "legitspeed":
                 LegitSpeed.toggle();
+                break;
+            case "noslow":
+                NoSlow.toggle();
                 break;
             case "fill":
                 switch (args.length) {

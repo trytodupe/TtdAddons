@@ -31,6 +31,7 @@ public class ConfigHandler {
     public static boolean noJumpDelay;
     public static boolean headRotation;
     public static boolean legitSpeed;
+    public static boolean noSlow;
     public static String chestFillerItemName;
     public static boolean chestFiller6;
 
@@ -68,6 +69,7 @@ public class ConfigHandler {
         final Property pNoJumpDelay = config.get(CATEGORY_TtdAddons, "No Jump Delay", false, "#");
         final Property pHeadRotation = config.get(CATEGORY_TtdAddons, "Head Rotation", false, "rotate your head client side");
         final Property pLegitSpeed = config.get(CATEGORY_TtdAddons, "Legit Speed", false, "#");
+        final Property pNoSlow = config.get(CATEGORY_TtdAddons, "No Slow", false, "#");
         final Property pChestFillerItemName = config.get(CATEGORY_TtdAddons, "Chest Filler Item Name", "", "item display name");
         final Property pChestFiller6 = config.get(CATEGORY_TtdAddons, "ChestFiller6", false, "ignore this if you don't know what this is");
 
@@ -89,6 +91,7 @@ public class ConfigHandler {
         TtdAddons.add(pNoJumpDelay.getName());
         TtdAddons.add(pHeadRotation.getName());
         TtdAddons.add(pLegitSpeed.getName());
+        TtdAddons.add(pNoSlow.getName());
         TtdAddons.add(pChestFillerItemName.getName());
         TtdAddons.add(pChestFiller6.getName());
         config.setCategoryPropertyOrder(CATEGORY_TtdAddons, TtdAddons);
@@ -111,6 +114,7 @@ public class ConfigHandler {
             noJumpDelay = pNoJumpDelay.getBoolean();
             headRotation = pHeadRotation.getBoolean();
             legitSpeed = pLegitSpeed.getBoolean();
+            noSlow = pNoSlow.getBoolean();
             chestFillerItemName = pChestFillerItemName.getString();
             chestFiller6 = pChestFiller6.getBoolean();
         }
@@ -132,6 +136,7 @@ public class ConfigHandler {
             pNoJumpDelay.set(noJumpDelay);
             pHeadRotation.set(headRotation);
             pLegitSpeed.set(legitSpeed);
+            pNoSlow.set(noSlow);
             pChestFillerItemName.set(chestFillerItemName);
             pChestFiller6.set(chestFiller6);
         }

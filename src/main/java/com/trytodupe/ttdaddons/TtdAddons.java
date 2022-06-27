@@ -14,13 +14,11 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import java.io.File;
 
-import static com.trytodupe.ttdaddons.Config.ConfigHandler.legitSpeed;
-
 @Mod(modid = TtdAddons.MODID, version = TtdAddons.VERSION)
 public class TtdAddons
 {
     public static final String MODID = "ttdaddons";
-    public static final String VERSION = "0.0.9";
+    public static final String VERSION = "0.0.10";
     private static boolean debug = false;
     public static File configurationFile;
     public static final Minecraft mc = Minecraft.getMinecraft();
@@ -43,6 +41,7 @@ public class TtdAddons
     public void Init(FMLPreInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(new ChestFiller());
         MinecraftForge.EVENT_BUS.register(new LegitSpeed());
+        MinecraftForge.EVENT_BUS.register(new NoSlow());
         ClientCommandHandler.instance.registerCommand(new Commands());
     }
 }
