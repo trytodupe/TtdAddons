@@ -8,6 +8,7 @@ import com.trytodupe.ttdaddons.Features.GhostHand;
 import com.trytodupe.ttdaddons.Features.Hitboxes;
 import com.trytodupe.ttdaddons.Features.KeepSprint;
 import com.trytodupe.ttdaddons.Features.LegitSpeed;
+import com.trytodupe.ttdaddons.Features.ModLess;
 import com.trytodupe.ttdaddons.Features.NoJumpDelay;
 import com.trytodupe.ttdaddons.Features.NoSlow;
 import com.trytodupe.ttdaddons.Features.Reach;
@@ -56,6 +57,9 @@ public class Commands extends CommandBase {
                 System.out.println(mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1).getDisplayName());
 
                 TtdAddons.toggleDebug();
+                break;
+            case "modless":
+                ModLess.toggle();
                 break;
             case "reach":
                 switch (args.length) {
@@ -166,6 +170,7 @@ public class Commands extends CommandBase {
     private String getUsage() {
         // <> = required arguments; [] = optional arguments.
         return
+                "/ttd modLess - hides your mods from servers.\n" +
                 "/ttd reach [&bdistance&r] - toggle reach or set reach distance.\n" +
                 "/ttd hitboxes [&bexpand&r] - toggle hitboxes or set hitboxes expand.\n" +
                 "/ttd hitboxes [&b\"weapons\"&r] - toggle hitboxes weapons only.\n" +
@@ -175,7 +180,8 @@ public class Commands extends CommandBase {
                 "/ttd speedMine [&bspeed&r] - toggle speed mine or set speed mine speed(there are two args).\n" +
                 "/ttd noJumpDelay - toggle no jump delay.\n" +
                 "/ttd headRotation - toggle client side head rotations.\n" +
-                "/ttd legitSpeed - toggle legit speed.";
+                "/ttd legitSpeed - toggle legit speed.\n" +
+                "/ttd noSlow - toggle no slow.";
                 // "/trytodupe fill [&bitem&r] - fill chests with custom item."
                 // "/trytodupe fill6"
     }

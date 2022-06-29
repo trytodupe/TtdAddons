@@ -26,6 +26,7 @@
 </a>
 
 **Features:**
+* Mod Less
 * Reach
 * Hitboxes
 * Camera Clip
@@ -35,10 +36,12 @@
 * No Jump Delay
 * Head Rotation (it rotates your body as well idk why i made it called head rotation)
 * Legit Speed
+* No Slow
 
 **Usage:**
 _() = aliases; <> = required arguments; [] = optional arguments._
 * /trytodupe (ttd) - get usage.
+* /trytodupe modLess - hides your mods from servers.
 * /trytodupe reach [distance] - toggle reach or set reach distance.
 * /trytodupe hitboxes [expand] - toggle hitboxes or set hitboxes expand.
 * /trytodupe hitboxes [\"weapons\"] - toggle hitboxes weapons only.
@@ -49,6 +52,7 @@ _() = aliases; <> = required arguments; [] = optional arguments._
 * /trytodupe noJumpDelay - toggle no jump delay.
 * /trytodupe headRotation - toggle client side head rotations.
 * /trytodupe legitSpeed - toggle legit speed.
+* /trytodupe noSlow - toggle no slow.
 
 **Todo:**
 * criticals

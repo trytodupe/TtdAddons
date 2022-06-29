@@ -2,6 +2,8 @@ package com.trytodupe.ttdaddons.Features;
 
 import com.trytodupe.ttdaddons.Config.ConfigHandler;
 import com.trytodupe.ttdaddons.utils.ChatLib;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemPotion;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.util.BlockPos;
@@ -22,7 +24,7 @@ public class NoSlow {
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.action != PlayerInteractEvent.Action.RIGHT_CLICK_AIR || mc.thePlayer.getHeldItem() == null || !ConfigHandler.noSlow) return;
         ItemStack itemStack = mc.thePlayer.getHeldItem();
-        if (itemStack.getItem().getRegistryName().toLowerCase().contains("sword")) {
+        if (itemStack.getItem().getRegistryName().toLowerCase().contains("sword") || itemStack.getItem().getRegistryName().toLowerCase().contains("milk") || itemStack.getItem() instanceof ItemFood || itemStack.getItem() instanceof ItemPotion) {
             event.setCanceled(true);
             if (mc.gameSettings.keyBindUseItem.isKeyDown()) {
                 mc.getNetHandler().getNetworkManager().sendPacket(new C08PacketPlayerBlockPlacement(

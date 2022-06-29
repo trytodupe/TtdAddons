@@ -1,5 +1,6 @@
 package com.trytodupe.ttdaddons.Mixins;
 
+import com.trytodupe.ttdaddons.Config.ConfigHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.ModContainer;
 import net.minecraftforge.fml.common.network.handshake.FMLHandshakeMessage;
@@ -14,6 +15,7 @@ import java.util.Map;
 
 @Mixin({FMLHandshakeMessage.ModList.class})
 public abstract class MixinModid {
+
     @Shadow(remap = false)
     private Map<String, String> modTags;
 
@@ -21,5 +23,7 @@ public abstract class MixinModid {
     private void removeMod(List<ModContainer> modList, CallbackInfo ci) {
         if (Minecraft.getMinecraft().isSingleplayer()) return;
         this.modTags.remove("ttdaddons");
+        if (!ConfigHandler.modLess) return;
+        this.modTags.entrySet().removeIf(mod -> (!((String)mod.getKey()).equalsIgnoreCase("fml") && !((String)mod.getKey()).equalsIgnoreCase("forge") && !((String)mod.getKey()).equalsIgnoreCase("mcp")));
     }
 }

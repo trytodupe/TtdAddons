@@ -15,6 +15,7 @@ public class ConfigHandler {
     /**
      * TtdAddons config
      */
+    public static boolean modLess;
     public static boolean reach;
     public static double reachRange;
     public static boolean hitboxes;
@@ -53,6 +54,7 @@ public class ConfigHandler {
 
         /*Reads the fields in the config and stores them in the property objects, and defines a default value if the fields doesn't exist*/
         final String CATEGORY_TtdAddons = "Ttd Addons";
+        final Property pModLess = config.get(CATEGORY_TtdAddons, "Mod Less", true, "ttdaddons will be removed even if this is disabled");
         final Property pReach = config.get(CATEGORY_TtdAddons, "Reach", false, "#");
         final Property pReachRange = config.get(CATEGORY_TtdAddons, "Reach Range", 3D, "number between 3 to 6");
         final Property pHitboxes = config.get(CATEGORY_TtdAddons, "Hitboxes", false, "#");
@@ -75,6 +77,7 @@ public class ConfigHandler {
 
         /*Set the Order in which the config entries appear in the config file */
         List<String> TtdAddons = new ArrayList<>();
+        TtdAddons.add(pModLess.getName());
         TtdAddons.add(pReach.getName());
         TtdAddons.add(pReachRange.getName());
         TtdAddons.add(pHitboxes.getName());
@@ -98,6 +101,7 @@ public class ConfigHandler {
 
         /*sets the fields of this class to the fields in the properties*/
         if (readFieldsFromConfig) {
+            modLess = pModLess.getBoolean();
             reach = pReach.getBoolean();
             reachRange = pReachRange.getDouble();
             hitboxes = pHitboxes.getBoolean();
@@ -120,6 +124,7 @@ public class ConfigHandler {
         }
 
         if (saveFieldsToConfig) {
+            pModLess.set(modLess);
             pReach.set(reach);
             pReachRange.set(reachRange);
             pHitboxes.set(hitboxes);
