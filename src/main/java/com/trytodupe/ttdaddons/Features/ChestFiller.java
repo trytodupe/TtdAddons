@@ -3,7 +3,6 @@ package com.trytodupe.ttdaddons.Features;
 import com.trytodupe.ttdaddons.Config.ConfigHandler;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 import com.trytodupe.ttdaddons.Objects.Inventory;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.inventory.Slot;
 import net.minecraft.util.StringUtils;

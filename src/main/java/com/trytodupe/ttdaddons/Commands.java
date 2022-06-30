@@ -1,6 +1,7 @@
 package com.trytodupe.ttdaddons;
 
 import com.trytodupe.ttdaddons.Config.ConfigHandler;
+import com.trytodupe.ttdaddons.Features.AutoReadyUp;
 import com.trytodupe.ttdaddons.Features.CameraClip;
 import com.trytodupe.ttdaddons.Features.HeadRotation;
 import com.trytodupe.ttdaddons.Features.ChestFiller;
@@ -143,6 +144,9 @@ public class Commands extends CommandBase {
             case "noslow":
                 NoSlow.toggle();
                 break;
+            case "autoreadyup":
+                AutoReadyUp.toggle();
+                break;
             case "fill":
                 switch (args.length) {
                     case (1):
@@ -181,7 +185,8 @@ public class Commands extends CommandBase {
                 "/ttd noJumpDelay - toggle no jump delay.\n" +
                 "/ttd headRotation - toggle client side head rotations.\n" +
                 "/ttd legitSpeed - toggle legit speed.\n" +
-                "/ttd noSlow - toggle no slow.";
+                "/ttd noSlow - toggle no slow.\n" +
+                "/ttd autoReadyUp - toggle auto ready up.";
                 // "/trytodupe fill [&bitem&r] - fill chests with custom item."
                 // "/trytodupe fill6"
     }

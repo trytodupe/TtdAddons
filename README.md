@@ -55,4 +55,5 @@ _() = aliases; <> = required arguments; [] = optional arguments._
 * /trytodupe noSlow - toggle no slow.
 
 **Todo:**
+* click gui
 * criticals

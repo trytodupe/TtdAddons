@@ -1,6 +1,7 @@
 package com.trytodupe.ttdaddons;
 
 import com.trytodupe.ttdaddons.Config.ConfigHandler;
+import com.trytodupe.ttdaddons.Features.AutoReadyUp;
 import com.trytodupe.ttdaddons.Features.ChestFiller;
 import com.trytodupe.ttdaddons.Features.LegitSpeed;
 import com.trytodupe.ttdaddons.Features.NoSlow;
@@ -20,7 +21,7 @@ import java.io.File;
 public class TtdAddons
 {
     public static final String MODID = "ttdaddons";
-    public static final String VERSION = "0.0.11";
+    public static final String VERSION = "0.0.12";
     private static boolean debug = false;
     public static File configurationFile;
     public static final Minecraft mc = Minecraft.getMinecraft();
@@ -45,6 +46,7 @@ public class TtdAddons
         MinecraftForge.EVENT_BUS.register(new LegitSpeed());
         MinecraftForge.EVENT_BUS.register(new NoSlow());
         MinecraftForge.EVENT_BUS.register(new KeyBinds());
+        MinecraftForge.EVENT_BUS.register(new AutoReadyUp());
 
         ClientCommandHandler.instance.registerCommand(new Commands());
 
