@@ -41,18 +41,19 @@
 **Usage:**
 _() = aliases; <> = required arguments; [] = optional arguments._
 * /trytodupe (ttd) - get usage.
-* /trytodupe modLess - hides your mods from servers.
-* /trytodupe reach [distance] - toggle reach or set reach distance.
-* /trytodupe hitboxes [expand] - toggle hitboxes or set hitboxes expand.
-* /trytodupe hitboxes [\"weapons\"] - toggle hitboxes weapons only.
-* /trytodupe cameraClip [clipDistance] - toggle camera clip or set clip distance.
-* /trytodupe ghostHand [\"tools\"] - hit through teammates & hit through entities while holding tools.
-* /trytodupe keepSprint - toggle keep sprint.
-* /trytodupe speedMine [speed] - toggle speed mine or set speed mine speed(there are two arguments but they do not conflict so there is just one input argument).
-* /trytodupe noJumpDelay - toggle no jump delay.
-* /trytodupe headRotation - toggle client side head rotations.
-* /trytodupe legitSpeed - toggle legit speed.
-* /trytodupe noSlow - toggle no slow.
+* /ttd modLess - hides your mods from servers.
+* /ttd reach [distance] - toggle reach or set reach distance.
+* /ttd hitboxes [expand] - toggle hitboxes or set hitboxes expand.
+* /ttd hitboxes [\"weapons\"] - toggle hitboxes weapons only.
+* /ttd cameraClip [clipDistance] - toggle camera clip or set clip distance.
+* /ttd ghostHand [\"tools\"] - hit through teammates & hit through entities while holding tools.
+* /ttd keepSprint - toggle keep sprint.
+* /ttd speedMine [speed] - toggle speed mine or set speed mine speed(there are two arguments but they do not conflict so there is just one input argument).
+* /ttd noJumpDelay - toggle no jump delay.
+* /ttd headRotation - toggle client side head rotations.
+* /ttd legitSpeed - toggle legit speed.
+* /ttd noSlow - toggle no slow.
+* /ttd autoReadyUp - toggle auto ready up for skyblock dungeons.
 
 **Todo:**
 * click gui
