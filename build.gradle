@@ -13,16 +13,21 @@ buildscript {
             name = "jitpack"
             url = "https://jitpack.io/"
         }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath "com.github.asbyth:ForgeGradle:6f53277"
         classpath "com.github.LxGaming:MixinGradle:d75e32e"
+        classpath "com.github.jengelman.gradle.plugins:shadow:6.1.0"
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
+apply plugin: "com.github.johnrengelman.shadow"
 
 version = "1.8.9-0.0.12"
 group= "com.trytodupe.ttdaddons"
@@ -50,6 +55,17 @@ mixin {
     add sourceSets.main, "mixins.ttdaddons.refmap.json"
 }
 
+shadowJar {
+    dependencies {
+        exclude 'gson-2.2.4.jar'
+        exclude 'guava-17.0.jar'
+        exclude 'commons-io-2.4.jar'
+        exclude 'dummyThing'
+        exclude 'LICENSE.txt'
+    }
+    finalizedBy 'reobfJar'
+}
+
 jar {
     manifest.attributes(
             'Main-Class': 'TtdAddons',
@@ -74,4 +90,12 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
+
+reobf {
+    shadowJar { }
+}
+
+sourceJar {
+    enabled = false
 }

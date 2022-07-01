@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.util.List;
+import java.util.Objects;
 
 import static com.trytodupe.ttdaddons.TtdAddons.mc;
 
@@ -22,7 +23,7 @@ public class AutoReadyUp {
 
     private static Inventory openedInventory = null;
 
-    private static boolean readyUp = false;
+    private static boolean readyUp = true;
 
     private static boolean dungeonStarted = false;
 
@@ -34,34 +35,40 @@ public class AutoReadyUp {
 
     @SubscribeEvent
     public void onTick(TickEvent.ClientTickEvent event) {
-        if (ConfigHandler.autoReadyUp &&  !dungeonStarted) {
-            String title;
-            if (mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1) == null) title = " ";
-            else title = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1).getDisplayName();
-            if ((StringUtils.stripControlCodes(title).contains("SKYBLOCK") && ScoreboardUtils.scoreboardContains("The Catacombs") && !ScoreboardUtils.scoreboardContains("Queue")) || ScoreboardUtils.scoreboardContains("Dungeon Cleared:"))
+        if (ConfigHandler.autoReadyUp && !dungeonStarted) {
+            /*
+            if (mc.theWorld == null || mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1) == null) return;
+            String title = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1).getDisplayName();
+            if ((StringUtils.stripControlCodes(title).contains("SKYBLOCK") && ScoreboardUtils.scoreboardContains("The Catacombs") && !ScoreboardUtils.scoreboardContains("Queue")))
                 if (!readyUp)
                     for (Entity entity : mc.theWorld.getLoadedEntityList()) {
-                        if (entity instanceof net.minecraft.entity.item.EntityArmorStand &&
-                                entity.hasCustomName() && entity.getCustomNameTag().equals("§bMort")) {
-                            List<Entity> possibleEntities = entity.getEntityWorld().getEntitiesInAABBexcluding(entity, entity.getEntityBoundingBox().expand(0.0D, 3.0D, 0.0D), e -> e instanceof EntityPlayer);
-                            if (!possibleEntities.isEmpty()) {
-                                mc.playerController.interactWithEntitySendPacket((EntityPlayer)mc.thePlayer, possibleEntities.get(0));
+                        if (entity instanceof net.minecraft.entity.item.EntityArmorStand && entity.hasCustomName() && entity.getCustomNameTag().equals("§bMort")) {
+                            List<Entity> possibleEntities = entity.getEntityWorld().getEntitiesInAABBexcluding(entity, entity.getEntityBoundingBox().expand(0D, 3D, 3D), e -> e instanceof EntityPlayer);
+                            if (!possibleEntities.isEmpty() && possibleEntities.get(0).getDistanceToEntity(mc.thePlayer) <= 3D) {
+                                mc.playerController.interactWithEntitySendPacket((EntityPlayer) mc.thePlayer, possibleEntities.get(0));
                                 readyUp = true;
                             }
                         }
                     }
+            */
             Inventory inventory = openedInventory;
+            if (openedInventory == null) return;
             String chestName = inventory.getName();
-            if (readyUp && chestName != null) {
+            if (readyUp) {
                 if (chestName.equals("Start Dungeon?")) {
                     mc.playerController.windowClick(mc.thePlayer.openContainer.windowId, 13, 2, 0, (EntityPlayer)mc.thePlayer);
                     return;
                 }
                 if (chestName.startsWith("Catacombs - "))
                     for (Slot slot : mc.thePlayer.openContainer.inventorySlots) {
-                        if (slot.getStack() != null && slot.getStack().getDisplayName().contains(mc.thePlayer.getName())) {
-                            mc.playerController.windowClick(mc.thePlayer.openContainer.windowId, slot.slotNumber, 2, 0, (EntityPlayer)mc.thePlayer);
-                            mc.thePlayer.closeScreen();
+                        if (slot.getStack() != null && slot.getStack().getDisplayName().contains(mc.thePlayer.getName()) && Objects.requireNonNull(inventory.getItemInSlot(slot.slotNumber + 9)).getDisplayName().contains("Not")) {
+                            new Thread(() -> {
+                                try {
+                                    mc.playerController.windowClick(mc.thePlayer.openContainer.windowId, slot.slotNumber, 2, 0, (EntityPlayer)mc.thePlayer);
+                                    Thread.sleep(500);
+                                    mc.thePlayer.closeScreen();
+                                } catch (Exception ignored) {}
+                            }).start();
                             break;
                         }
                     }
@@ -84,7 +91,7 @@ public class AutoReadyUp {
 
     @SubscribeEvent
     public void onJoinWorld(WorldEvent.Load event) {
-        readyUp = false;
+        //readyUp = false;
         dungeonStarted = false;
     }
 }
