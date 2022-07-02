@@ -1,11 +1,11 @@
 package com.trytodupe.ttdaddons;
 
-import com.trytodupe.ttdaddons.Config.ConfigHandler;
-import com.trytodupe.ttdaddons.Features.AutoReadyUp;
-import com.trytodupe.ttdaddons.Features.ChestFiller;
-import com.trytodupe.ttdaddons.Features.LegitSpeed;
-import com.trytodupe.ttdaddons.Features.NoSlow;
-import com.trytodupe.ttdaddons.Objects.KeyBind;
+import com.trytodupe.ttdaddons.config.ConfigHandler;
+import com.trytodupe.ttdaddons.features.AutoReadyUp;
+import com.trytodupe.ttdaddons.features.ChestFiller;
+import com.trytodupe.ttdaddons.features.LegitSpeed;
+import com.trytodupe.ttdaddons.features.NoSlow;
+import com.trytodupe.ttdaddons.objects.KeyBind;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.ClientCommandHandler;
@@ -21,7 +21,7 @@ import java.io.File;
 public class TtdAddons
 {
     public static final String MODID = "ttdaddons";
-    public static final String VERSION = "0.1.0";
+    public static final String VERSION = "0.1.1";
     private static boolean debug = false;
     public static File configurationFile;
     public static final Minecraft mc = Minecraft.getMinecraft();

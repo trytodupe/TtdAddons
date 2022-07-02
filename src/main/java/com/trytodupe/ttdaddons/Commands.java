@@ -1,24 +1,23 @@
 package com.trytodupe.ttdaddons;
 
-import com.trytodupe.ttdaddons.Config.ConfigHandler;
-import com.trytodupe.ttdaddons.Features.AutoReadyUp;
-import com.trytodupe.ttdaddons.Features.CameraClip;
-import com.trytodupe.ttdaddons.Features.HeadRotation;
-import com.trytodupe.ttdaddons.Features.ChestFiller;
-import com.trytodupe.ttdaddons.Features.GhostHand;
-import com.trytodupe.ttdaddons.Features.Hitboxes;
-import com.trytodupe.ttdaddons.Features.KeepSprint;
-import com.trytodupe.ttdaddons.Features.LegitSpeed;
-import com.trytodupe.ttdaddons.Features.ModLess;
-import com.trytodupe.ttdaddons.Features.NoJumpDelay;
-import com.trytodupe.ttdaddons.Features.NoSlow;
-import com.trytodupe.ttdaddons.Features.Reach;
-import com.trytodupe.ttdaddons.Features.SpeedMine;
+import com.trytodupe.ttdaddons.config.ConfigHandler;
+import com.trytodupe.ttdaddons.features.AutoReadyUp;
+import com.trytodupe.ttdaddons.features.CameraClip;
+import com.trytodupe.ttdaddons.features.HeadRotation;
+import com.trytodupe.ttdaddons.features.ChestFiller;
+import com.trytodupe.ttdaddons.features.GhostHand;
+import com.trytodupe.ttdaddons.features.Hitboxes;
+import com.trytodupe.ttdaddons.features.KeepSprint;
+import com.trytodupe.ttdaddons.features.LegitSpeed;
+import com.trytodupe.ttdaddons.features.ModLess;
+import com.trytodupe.ttdaddons.features.NoJumpDelay;
+import com.trytodupe.ttdaddons.features.NoSlow;
+import com.trytodupe.ttdaddons.features.Reach;
+import com.trytodupe.ttdaddons.features.SpeedMine;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.util.StringUtils;
 
 import java.util.ArrayList;
 
@@ -55,8 +54,7 @@ public class Commands extends CommandBase {
             case "debug":
                 if (mc.thePlayer.getHeldItem() != null) ChatLib.chat(mc.thePlayer.getHeldItem().getItem().getUnlocalizedName());
                 System.out.println(mc.thePlayer.getDisplayName().getFormattedText());
-                System.out.println(mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1).getDisplayName());
-
+                if (mc.theWorld.getScoreboard() != null && mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1) != null) System.out.println(mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1).getDisplayName());
                 TtdAddons.toggleDebug();
                 break;
             case "modless":

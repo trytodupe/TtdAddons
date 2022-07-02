@@ -1,9 +1,9 @@
 package com.trytodupe.ttdaddons;
 
-import com.trytodupe.ttdaddons.Features.LegitSpeed;
-import com.trytodupe.ttdaddons.Features.NoSlow;
-import com.trytodupe.ttdaddons.Features.SpeedMine;
-import com.trytodupe.ttdaddons.Objects.KeyBind;
+import com.trytodupe.ttdaddons.features.LegitSpeed;
+import com.trytodupe.ttdaddons.features.NoSlow;
+import com.trytodupe.ttdaddons.features.SpeedMine;
+import com.trytodupe.ttdaddons.objects.KeyBind;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.input.Keyboard;

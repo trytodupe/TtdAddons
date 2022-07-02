@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.7",
-  "package": "com.trytodupe.ttdaddons.Mixins",
+  "package": "com.trytodupe.ttdaddons.mixins",
   "refmap": "mixins.ttdaddons.refmap.json",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
@@ -14,6 +14,7 @@
     "MixinPlayerControllerMP",
     "MixinPlayerSP",
     "MixinRendererLivingEntity",
-    "MixinNetworkManager"
+    "MixinNetworkManager",
+    "AccessorC03PacketPlayer"
   ]
 }
