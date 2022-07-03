@@ -3,6 +3,7 @@ package com.trytodupe.ttdaddons;
 import com.trytodupe.ttdaddons.config.ConfigHandler;
 import com.trytodupe.ttdaddons.features.AutoReadyUp;
 import com.trytodupe.ttdaddons.features.ChestFiller;
+import com.trytodupe.ttdaddons.features.GhostHand;
 import com.trytodupe.ttdaddons.features.LegitSpeed;
 import com.trytodupe.ttdaddons.features.NoSlow;
 import com.trytodupe.ttdaddons.objects.KeyBind;
@@ -10,10 +11,12 @@ import com.trytodupe.ttdaddons.utils.ChatLib;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.io.File;
 
@@ -21,7 +24,7 @@ import java.io.File;
 public class TtdAddons
 {
     public static final String MODID = "ttdaddons";
-    public static final String VERSION = "0.1.1";
+    public static final String VERSION = "0.1.2";
     private static boolean debug = false;
     public static File configurationFile;
     public static final Minecraft mc = Minecraft.getMinecraft();
@@ -47,6 +50,7 @@ public class TtdAddons
         MinecraftForge.EVENT_BUS.register(new NoSlow());
         MinecraftForge.EVENT_BUS.register(new KeyBinds());
         MinecraftForge.EVENT_BUS.register(new AutoReadyUp());
+        // MinecraftForge.EVENT_BUS.register(new TtdAddons());
 
         ClientCommandHandler.instance.registerCommand(new Commands());
 
@@ -54,4 +58,10 @@ public class TtdAddons
             ClientRegistry.registerKeyBinding(keyBind.mcKeyBinding());
         }
     }
+
+/*    @SubscribeEvent
+    public void onAttack(AttackEntityEvent event) {
+        if (!isDebug()) return;
+        System.out.println(event.target.getDisplayName().getFormattedText() + " " + GhostHand.shouldHitThrough(event.target));
+    }*/
 }

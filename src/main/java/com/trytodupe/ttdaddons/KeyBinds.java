@@ -1,5 +1,6 @@
 package com.trytodupe.ttdaddons;
 
+import com.trytodupe.ttdaddons.config.ConfigHandler;
 import com.trytodupe.ttdaddons.features.LegitSpeed;
 import com.trytodupe.ttdaddons.features.NoSlow;
 import com.trytodupe.ttdaddons.features.SpeedMine;
@@ -19,5 +20,6 @@ public class KeyBinds {
         if (legitSpeed.isPressed()) LegitSpeed.toggle();
         if (speedMine.isPressed()) SpeedMine.toggle();
         if (noSlow.isPressed()) NoSlow.toggle();
+        ConfigHandler.saveConfig();
     }
 }

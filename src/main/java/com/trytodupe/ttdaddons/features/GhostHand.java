@@ -1,5 +1,6 @@
 package com.trytodupe.ttdaddons.features;
 
+import com.trytodupe.ttdaddons.TtdAddons;
 import com.trytodupe.ttdaddons.config.ConfigHandler;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 
@@ -22,7 +23,6 @@ public class GhostHand {
     }
 
     public static boolean shouldHitThrough(Entity e) {
-        Entity e2 = mc.thePlayer;
         if (ConfigHandler.ghostHandTools && mc.thePlayer.getHeldItem() != null &&
                 (mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("pickaxe")
                 || mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("hatchet") //who tf made axe called hatchet
@@ -34,19 +34,32 @@ public class GhostHand {
             return false;
 
         char color1 = ' ', color2 = ' ';
-        String title;
+        String title, name1 = e.getDisplayName().getFormattedText(), name2 = mc.thePlayer.getDisplayName().getFormattedText();
+
+        if (name1.startsWith("§r§6[§2S§6] ")) name1 = name1.replace("§r§6[§2S§6] ", "");
+        if (name2.startsWith("§r§6[§2S§6] ")) name2 = name2.replace("§r§6[§2S§6] ", "");
+
         if (mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1) == null) title = " ";
         else title = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1).getDisplayName();
 
-        if (e.getDisplayName().getFormattedText().charAt(2) == '§')
-            color1 = e.getDisplayName().getFormattedText().charAt(3);
-        else if (e.getDisplayName().getFormattedText().charAt(0) == '§' && e.getDisplayName().getFormattedText().charAt(1) != 'r')
-            color1 = e.getDisplayName().getFormattedText().charAt(1);
+        if (name1.charAt(2) == '§')
+            color1 = name1.charAt(3);
+        else if (name1.charAt(0) == '§' && name1.charAt(1) != 'r')
+            color1 = name1.charAt(1);
 
-        if (e2.getDisplayName().getFormattedText().charAt(2) == '§')
-            color2 = e2.getDisplayName().getFormattedText().charAt(3);
-        else if (e2.getDisplayName().getFormattedText().charAt(0) == '§' && e2.getDisplayName().getFormattedText().charAt(2) != '§' && e2.getDisplayName().getFormattedText().charAt(1) == 'r' && title.charAt(0) == '§')
+        if (name2.charAt(2) == '§')
+            color2 = name2.charAt(3);
+        else if (name2.charAt(0) == '§' && name2.charAt(2) != '§' && name2.charAt(1) == 'r' && title.charAt(0) == '§')
             color2 = title.charAt(1);
+
+/*
+        if (TtdAddons.isDebug()) {
+            System.out.println(e.getDisplayName().getFormattedText());
+            System.out.println("0:" + e.getDisplayName().getFormattedText().charAt(0) + " 1:" + e.getDisplayName().getFormattedText().charAt(1) + " 2:" + e.getDisplayName().getFormattedText().charAt(2) + " 3:" + e.getDisplayName().getFormattedText().charAt(3));
+            System.out.println(color1 + "§§§" + color2);
+            System.out.println("0:" + (e.getDisplayName().getFormattedText().charAt(0) == '§') + " 1:" + (e.getDisplayName().getFormattedText().charAt(1) == 'r') + " 2:" + (e.getDisplayName().getFormattedText().charAt(2) == '§'));
+        }
+*/
 
         return color1 != ' ' && color2 != ' ' && color1 == color2;
     }
