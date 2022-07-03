@@ -169,7 +169,7 @@ public class Commands extends CommandBase {
         ConfigHandler.saveConfig();
     }
 
-    private String getUsage() {
+    public static String getUsage() {
         // <> = required arguments; [] = optional arguments.
         return
                 "/ttd modLess - hides your mods from servers.\n" +
@@ -184,7 +184,8 @@ public class Commands extends CommandBase {
                 "/ttd headRotation - toggle client side head rotations.\n" +
                 "/ttd legitSpeed - toggle legit speed.\n" +
                 "/ttd noSlow - toggle no slow.\n" +
-                "/ttd autoReadyUp - toggle auto ready up.";
+                "/ttd autoReadyUp - toggle auto ready up.\n" +
+                "/hClip [&bdistance&r] - hclips.";
                 // "/trytodupe fill [&bitem&r] - fill chests with custom item."
                 // "/trytodupe fill6"
     }

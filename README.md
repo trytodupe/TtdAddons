@@ -37,6 +37,7 @@
 * Head Rotation (it rotates your body as well idk why i made it called head rotation)
 * Legit Speed
 * No Slow
+* hClip
 
 **Usage:**
 _() = aliases; <> = required arguments; [] = optional arguments._
@@ -54,7 +55,8 @@ _() = aliases; <> = required arguments; [] = optional arguments._
 * /ttd legitSpeed - toggle legit speed.
 * /ttd noSlow - toggle no slow.
 * /ttd autoReadyUp - toggle auto ready up for skyblock dungeons.
+* /hClip [distance] - hclips 
 
 **Todo:**
 * click gui
-* criticals
+* 

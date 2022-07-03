@@ -52,4 +52,12 @@ public class MathUtils {
         if (entity == null) return 0;
         return entity.getEyeHeight();
     }
+
+    public static float getYaw() {
+        if (mc.thePlayer == null) return 0;
+        float yaw = mc.thePlayer.rotationYaw;
+        while (yaw < -180) yaw += 360;
+        while (yaw >= 180) yaw -= 360;
+        return yaw;
+    }
 }
