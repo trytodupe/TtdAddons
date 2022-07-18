@@ -44,9 +44,9 @@ public class HClip extends CommandBase {
                 double deltaX = - Math.sin((double) mc.thePlayer.getRotationYawHead() * Math.PI / 180d) * distance;
                 double deltaZ = Math.cos((double) MathUtils.getYaw() * Math.PI / 180d) * distance;
                 mc.thePlayer.setPosition(
-                        mc.thePlayer.posX + deltaX,
+                        Math.floor(mc.thePlayer.posX + deltaX) + 0.5D,
                         mc.thePlayer.posY,
-                        mc.thePlayer.posZ + deltaZ
+                        Math.floor(mc.thePlayer.posZ + deltaZ) + 0.5D
                 );
                 if (TtdAddons.isDebug()) ChatLib.chat(MathUtils.getYaw() + " " + deltaX + " " + deltaZ);
             }

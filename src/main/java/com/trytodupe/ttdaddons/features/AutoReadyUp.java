@@ -57,7 +57,7 @@ public class AutoReadyUp {
                 }
                 if (chestName.startsWith("Catacombs - "))
                     for (Slot slot : mc.thePlayer.openContainer.inventorySlots) {
-                        if (slot.getStack() != null && slot.getStack().getDisplayName().contains(mc.thePlayer.getName()) && Objects.requireNonNull(inventory.getItemInSlot(slot.slotNumber + 9)).getDisplayName().contains("Not")) {
+                        if (slot.getStack() != null && slot.getStack().getDisplayName().contains(mc.thePlayer.getName()) && inventory.getItemInSlot(slot.slotNumber + 9) != null && inventory.getItemInSlot(slot.slotNumber + 9).getDisplayName().contains("Not")) {
                             new Thread(() -> {
                                 try {
                                     mc.playerController.windowClick(mc.thePlayer.openContainer.windowId, slot.slotNumber, 2, 0, (EntityPlayer)mc.thePlayer);

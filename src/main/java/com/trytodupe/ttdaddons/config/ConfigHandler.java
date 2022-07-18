@@ -33,8 +33,9 @@ public class ConfigHandler {
     public static boolean headRotation;
     public static boolean legitSpeed;
     public static boolean noSlow;
-    public static boolean criticals;
+    public static boolean criticals = false;
     public static boolean autoReadyUp;
+    public static boolean invMove = false;
     public static String chestFillerItemName;
     public static boolean chestFiller6;
 
@@ -74,8 +75,9 @@ public class ConfigHandler {
         final Property pHeadRotation = config.get(CATEGORY_TtdAddons, "Head Rotation", false, "rotate your head client side");
         final Property pLegitSpeed = config.get(CATEGORY_TtdAddons, "Legit Speed", false, "#");
         final Property pNoSlow = config.get(CATEGORY_TtdAddons, "No Slow", false, "#");
-        final Property pCriticals = config.get(CATEGORY_TtdAddons, "Criticals", false, "#");
+        //final Property pCriticals = config.get(CATEGORY_TtdAddons, "Criticals", false, "#");
         final Property pAutoReadyUp = config.get(CATEGORY_TtdAddons, "Auto Ready Up", false, "auto ready up in skyblock dungeons");
+        //final Property pInvMove = config.get(CATEGORY_TtdAddons, "Inventory Move", false, "#");
         final Property pChestFillerItemName = config.get(CATEGORY_TtdAddons, "Chest Filler Item Name", "", "item display name");
         final Property pChestFiller6 = config.get(CATEGORY_TtdAddons, "ChestFiller6", false, "ignore this if you don't know what this is");
 
@@ -99,8 +101,9 @@ public class ConfigHandler {
         TtdAddons.add(pHeadRotation.getName());
         TtdAddons.add(pLegitSpeed.getName());
         TtdAddons.add(pNoSlow.getName());
-        TtdAddons.add(pCriticals.getName());
+        //TtdAddons.add(pCriticals.getName());
         TtdAddons.add(pAutoReadyUp.getName());
+        //TtdAddons.add(pInvMove.getName());
         TtdAddons.add(pChestFillerItemName.getName());
         TtdAddons.add(pChestFiller6.getName());
         config.setCategoryPropertyOrder(CATEGORY_TtdAddons, TtdAddons);
@@ -125,8 +128,9 @@ public class ConfigHandler {
             headRotation = pHeadRotation.getBoolean();
             legitSpeed = pLegitSpeed.getBoolean();
             noSlow = pNoSlow.getBoolean();
-            criticals = pCriticals.getBoolean();
+            //criticals = pCriticals.getBoolean();
             autoReadyUp = pAutoReadyUp.getBoolean();
+            //invMove = pInvMove.getBoolean();
             chestFillerItemName = pChestFillerItemName.getString();
             chestFiller6 = pChestFiller6.getBoolean();
         }
@@ -150,8 +154,9 @@ public class ConfigHandler {
             pHeadRotation.set(headRotation);
             pLegitSpeed.set(legitSpeed);
             pNoSlow.set(noSlow);
-            pCriticals.set(criticals);
+            //pCriticals.set(criticals);
             pAutoReadyUp.set(autoReadyUp);
+            //pInvMove.set(invMove);
             pChestFillerItemName.set(chestFillerItemName);
             pChestFiller6.set(chestFiller6);
         }
@@ -160,7 +165,6 @@ public class ConfigHandler {
         if (config.hasChanged()) {
             config.save();
         }
-
     }
 
     /*

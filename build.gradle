@@ -29,7 +29,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: "com.github.johnrengelman.shadow"
 
-version = "1.8.9-0.1.3"
+version = "1.8.9-0.1.4"
 group= "com.trytodupe.ttdaddons"
 archivesBaseName = "TtdAddons"
 
@@ -73,7 +73,7 @@ jar {
             'MixinConfigs': 'mixins.ttdaddons.json',
             'FMLCorePluginContainsFMLMod': 'true',
             "ForceLoadAsMod": true,
-            'FMLCorePlugin': 'com.trytodupe.ttdaddons.Mixins.MixinLoader',
+            'FMLCorePlugin': 'com.trytodupe.ttdaddons.mixins.MixinLoader',
     )
 }
 

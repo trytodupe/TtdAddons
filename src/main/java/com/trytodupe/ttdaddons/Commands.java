@@ -7,6 +7,7 @@ import com.trytodupe.ttdaddons.features.HeadRotation;
 import com.trytodupe.ttdaddons.features.ChestFiller;
 import com.trytodupe.ttdaddons.features.GhostHand;
 import com.trytodupe.ttdaddons.features.Hitboxes;
+import com.trytodupe.ttdaddons.features.InvMove;
 import com.trytodupe.ttdaddons.features.KeepSprint;
 import com.trytodupe.ttdaddons.features.LegitSpeed;
 import com.trytodupe.ttdaddons.features.ModLess;
@@ -185,7 +186,7 @@ public class Commands extends CommandBase {
                 "/ttd legitSpeed - toggle legit speed.\n" +
                 "/ttd noSlow - toggle no slow.\n" +
                 "/ttd autoReadyUp - toggle auto ready up.\n" +
-                "/hClip [&bdistance&r] - hclips.";
+                "/hclip [&bdistance&r] - hclips.\n";
                 // "/trytodupe fill [&bitem&r] - fill chests with custom item."
                 // "/trytodupe fill6"
     }
