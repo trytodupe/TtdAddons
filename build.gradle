@@ -18,7 +18,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath "com.github.asbyth:ForgeGradle:6f53277"
+        classpath "com.github.DJtheRedstoner:ForgeGradle:6f53277"
         classpath "com.github.LxGaming:MixinGradle:d75e32e"
         classpath "com.github.jengelman.gradle.plugins:shadow:6.1.0"
     }
