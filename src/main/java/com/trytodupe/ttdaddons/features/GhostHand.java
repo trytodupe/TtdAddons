@@ -18,17 +18,25 @@ public class GhostHand {
 
     public static void toggleTools() {
         ConfigHandler.ghostHandTools = !ConfigHandler.ghostHandTools;
-        if (ConfigHandler.ghostHandTools) ChatLib.chat("Ghost Hand tools &aenabled");
-        else ChatLib.chat("Ghost Hand tools &cdisabled");
+        if (ConfigHandler.ghostHandTools) ChatLib.chat("Ghost Hand Tools &aenabled");
+        else ChatLib.chat("Ghost Hand Tools &cdisabled");
+    }
+
+    public static void toggleBow() {
+        ConfigHandler.ghostHandBow = !ConfigHandler.ghostHandBow;
+        if (ConfigHandler.ghostHandBow) ChatLib.chat("Ghost Hand Bow &aenabled");
+        else ChatLib.chat("Ghost Hand Bow &cdisabled");
     }
 
     public static boolean shouldHitThrough(Entity e) {
-        if (ConfigHandler.ghostHandTools && mc.thePlayer.getHeldItem() != null &&
-                (mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("pickaxe")
-                || mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("hatchet") //who tf made axe called hatchet
-                || mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("shovel")
-                || mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("hoe")) &&
-                !mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("shovelDiamond"))
+        if (mc.thePlayer.getHeldItem() != null &&
+                ((ConfigHandler.ghostHandTools &&
+                    (mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("pickaxe")
+                    || mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("hatchet") //who tf made axe called hatchet
+                    || mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("shovel")
+                    || mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("hoe")) &&
+                    !mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("shovelDiamond")) ||
+                (ConfigHandler.ghostHandBow && mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("bow"))))
             return true;
         if (e.getDisplayName().getUnformattedText().length() < 4)
             return false;

@@ -25,6 +25,7 @@ public class ConfigHandler {
     public static double cameraClipDistance;
     public static boolean ghostHand;
     public static boolean ghostHandTools;
+    public static boolean ghostHandBow;
     public static boolean keepSprint;
     public static boolean speedMine;
     public static double speedMineSpeed;
@@ -66,7 +67,8 @@ public class ConfigHandler {
         final Property pCameraClip = config.get(CATEGORY_TtdAddons, "Camera Clip", false, "#");
         final Property pCameraClipDistance = config.get(CATEGORY_TtdAddons, "Camera Clip Distance", 4D, "number greater than 0");
         final Property pGhostHand = config.get(CATEGORY_TtdAddons, "Ghost Hand", false, "hit through teammates");
-        final Property pGhostHandTools = config.get(CATEGORY_TtdAddons, "Ghost Hand Tools", false, "hit through everything with tools");
+        final Property pGhostHandTools = config.get(CATEGORY_TtdAddons, "Ghost Hand Tools", false, "hit through everything with tools, requires Ghost Hand to be enabled");
+        final Property pGhostHandBow = config.get(CATEGORY_TtdAddons, "Ghost Hand Bow", false, "hit through everything with bow, requires Ghost Hand to be enabled");
         final Property pKeepSprint = config.get(CATEGORY_TtdAddons, "Keep Sprint", false, "#");
         final Property pSpeedMine = config.get(CATEGORY_TtdAddons, "Speed Mine", false, "#");
         final Property pSpeedMineSpeed = config.get(CATEGORY_TtdAddons, "Speed Mine Speed", "1.3D", "number between 1.0 to 1.6");
@@ -93,6 +95,7 @@ public class ConfigHandler {
         TtdAddons.add(pCameraClipDistance.getName());
         TtdAddons.add(pGhostHand.getName());
         TtdAddons.add(pGhostHandTools.getName());
+        TtdAddons.add(pGhostHandBow.getName());
         TtdAddons.add(pKeepSprint.getName());
         TtdAddons.add(pSpeedMine.getName());
         TtdAddons.add(pSpeedMineSpeed.getName());
@@ -120,6 +123,7 @@ public class ConfigHandler {
             cameraClipDistance = pCameraClipDistance.getDouble();
             ghostHand = pGhostHand.getBoolean();
             ghostHandTools = pGhostHandTools.getBoolean();
+            ghostHandBow = pGhostHandBow.getBoolean();
             keepSprint = pKeepSprint.getBoolean();
             speedMine = pSpeedMine.getBoolean();
             speedMineSpeed = pSpeedMineSpeed.getDouble();
@@ -146,6 +150,7 @@ public class ConfigHandler {
             pCameraClipDistance.set(cameraClipDistance);
             pGhostHand.set(ghostHand);
             pGhostHandTools.set(ghostHandTools);
+            pGhostHandBow.set(ghostHandBow);
             pKeepSprint.set(keepSprint);
             pSpeedMine.set(speedMine);
             pSpeedMineSpeed.set(speedMineSpeed);

@@ -108,6 +108,7 @@ public class Commands extends CommandBase {
                         break;
                     case (2):
                         if (args[1].equalsIgnoreCase("tools")) GhostHand.toggleTools();
+                        else if (args[1].equalsIgnoreCase("bow")) GhostHand.toggleBow();
                         else ChatLib.chat(getUsage());
                         break;
                     default:
@@ -176,9 +177,11 @@ public class Commands extends CommandBase {
                 "/ttd modLess - hides your mods from servers.\n" +
                 "/ttd reach [&bdistance&r] - toggle reach or set reach distance.\n" +
                 "/ttd hitboxes [&bexpand&r] - toggle hitboxes or set hitboxes expand.\n" +
-                "/ttd hitboxes [&b\"weapons\"&r] - toggle hitboxes weapons only.\n" +
+                "/ttd hitboxes weapons - toggle hitboxes weapons only.\n" +
                 "/ttd cameraClip [&bclipDistance&r] - toggle camera clip or set clip distance.\n" +
-                "/ttd ghostHand [&b\"tools\"&r] - hit through teammates & hit through entities while holding tools.\n" +
+                "/ttd ghostHand - hit through teammates.\n" +
+                "/ttd ghostHand tools - hit through entities while holding tools.\n" +
+                "/ttd ghostHand bow - hit through entities while holding bow.\n" +
                 "/ttd keepSprint - toggle keep sprint.\n" +
                 "/ttd speedMine [&bspeed&r] - toggle speed mine or set speed mine speed(there are two args).\n" +
                 "/ttd noJumpDelay - toggle no jump delay.\n" +

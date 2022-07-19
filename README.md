@@ -45,9 +45,11 @@ _() = aliases; <> = required arguments; [] = optional arguments._
 * /ttd modLess - hides your mods from servers.
 * /ttd reach [distance] - toggle reach or set reach distance.
 * /ttd hitboxes [expand] - toggle hitboxes or set hitboxes expand.
-* /ttd hitboxes [\"weapons\"] - toggle hitboxes weapons only.
+* /ttd hitboxes weapons - toggle hitboxes weapons only.
 * /ttd cameraClip [clipDistance] - toggle camera clip or set clip distance.
-* /ttd ghostHand [\"tools\"] - hit through teammates & hit through entities while holding tools.
+* /ttd ghostHand - hit through teammates.
+* /ttd ghostHand tools - hit through entities while holding tools.
+* /ttd ghostHand bow - hit through entities while holding bow.
 * /ttd keepSprint - toggle keep sprint.
 * /ttd speedMine [speed] - toggle speed mine or set speed mine speed(there are two arguments but they do not conflict so there is just one input argument).
 * /ttd noJumpDelay - toggle no jump delay.
