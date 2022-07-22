@@ -7,6 +7,8 @@ import com.trytodupe.ttdaddons.features.InvMove;
 import com.trytodupe.ttdaddons.features.LegitSpeed;
 import com.trytodupe.ttdaddons.features.NoSlow;
 import com.trytodupe.ttdaddons.features.HClip;
+import com.trytodupe.ttdaddons.features.RejoinGame;
+import com.trytodupe.ttdaddons.features.Nuker;
 import com.trytodupe.ttdaddons.objects.KeyBind;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 import net.minecraft.client.Minecraft;
@@ -23,10 +25,11 @@ import java.io.File;
 public class TtdAddons
 {
     public static final String MODID = "ttdaddons";
-    public static final String VERSION = "0.1.5";
+    public static final String VERSION = "0.1.6";
     private static boolean debug = false;
     public static File configurationFile;
     public static final Minecraft mc = Minecraft.getMinecraft();
+
     public static void toggleDebug() {
         debug = !debug;
         ChatLib.chat("Debug: " + debug);
@@ -50,6 +53,8 @@ public class TtdAddons
         MinecraftForge.EVENT_BUS.register(new KeyBinds());
         MinecraftForge.EVENT_BUS.register(new AutoReadyUp());
         MinecraftForge.EVENT_BUS.register(new InvMove());
+        MinecraftForge.EVENT_BUS.register(new Nuker());
+        MinecraftForge.EVENT_BUS.register(new RejoinGame());
         // MinecraftForge.EVENT_BUS.register(new TtdAddons());
 
         ClientCommandHandler.instance.registerCommand(new Commands());

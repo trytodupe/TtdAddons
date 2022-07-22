@@ -37,6 +37,12 @@ public class ConfigHandler {
     public static boolean criticals = false;
     public static boolean autoReadyUp;
     public static boolean invMove = false;
+    public static boolean nuker;
+    public static boolean nukeSnow;
+    public static boolean nukeDirt;
+    public static int nukerHeight;
+    public static int nukerDepth;
+    public static int rejoinTime;
     public static String chestFillerItemName;
     public static boolean chestFiller6;
 
@@ -71,8 +77,8 @@ public class ConfigHandler {
         final Property pGhostHandBow = config.get(CATEGORY_TtdAddons, "Ghost Hand Bow", false, "hit through everything with bow, requires Ghost Hand to be enabled");
         final Property pKeepSprint = config.get(CATEGORY_TtdAddons, "Keep Sprint", false, "#");
         final Property pSpeedMine = config.get(CATEGORY_TtdAddons, "Speed Mine", false, "#");
-        final Property pSpeedMineSpeed = config.get(CATEGORY_TtdAddons, "Speed Mine Speed", "1.3D", "number between 1.0 to 1.6");
-        final Property pSpeedMineBlockBreak = config.get(CATEGORY_TtdAddons, "Speed Mine Block Break", "0.7D", "number between 0 to 0.9");
+        final Property pSpeedMineSpeed = config.get(CATEGORY_TtdAddons, "Speed Mine Speed", 1.3D, "number between 1.0 to 1.6");
+        final Property pSpeedMineBlockBreak = config.get(CATEGORY_TtdAddons, "Speed Mine Block Break", 0.6D, "number between 0 to 0.9");
         final Property pNoJumpDelay = config.get(CATEGORY_TtdAddons, "No Jump Delay", false, "#");
         final Property pHeadRotation = config.get(CATEGORY_TtdAddons, "Head Rotation", false, "rotate your head client side");
         final Property pLegitSpeed = config.get(CATEGORY_TtdAddons, "Legit Speed", false, "#");
@@ -80,6 +86,12 @@ public class ConfigHandler {
         //final Property pCriticals = config.get(CATEGORY_TtdAddons, "Criticals", false, "#");
         final Property pAutoReadyUp = config.get(CATEGORY_TtdAddons, "Auto Ready Up", false, "auto ready up in skyblock dungeons");
         //final Property pInvMove = config.get(CATEGORY_TtdAddons, "Inventory Move", false, "#");
+        final Property pNuker = config.get(CATEGORY_TtdAddons, "Nuker", false, "only works when holding shovel");
+        final Property pNukeSnow = config.get(CATEGORY_TtdAddons, "Nuke Snow", false, "#");
+        final Property pNukeDirt = config.get(CATEGORY_TtdAddons, "Nuke Dirt", false, "#");
+        final Property pNukerHeight = config.get(CATEGORY_TtdAddons, "Nuker Height", 0, "range to break above the player, number between 0 to 5");
+        final Property pNukerDepth = config.get(CATEGORY_TtdAddons, "Nuker Depth", 0, "range to break below the player, number between 0 to 3");
+        final Property pRejoinTime = config.get(CATEGORY_TtdAddons, "Rejoin Time", 1000, "in milliseconds, number greater than 0");
         final Property pChestFillerItemName = config.get(CATEGORY_TtdAddons, "Chest Filler Item Name", "", "item display name");
         final Property pChestFiller6 = config.get(CATEGORY_TtdAddons, "ChestFiller6", false, "ignore this if you don't know what this is");
 
@@ -107,6 +119,12 @@ public class ConfigHandler {
         //TtdAddons.add(pCriticals.getName());
         TtdAddons.add(pAutoReadyUp.getName());
         //TtdAddons.add(pInvMove.getName());
+        TtdAddons.add(pNuker.getName());
+        TtdAddons.add(pNukeSnow.getName());
+        TtdAddons.add(pNukeDirt.getName());
+        TtdAddons.add(pNukerHeight.getName());
+        TtdAddons.add(pNukerDepth.getName());
+        TtdAddons.add(pRejoinTime.getName());
         TtdAddons.add(pChestFillerItemName.getName());
         TtdAddons.add(pChestFiller6.getName());
         config.setCategoryPropertyOrder(CATEGORY_TtdAddons, TtdAddons);
@@ -135,6 +153,12 @@ public class ConfigHandler {
             //criticals = pCriticals.getBoolean();
             autoReadyUp = pAutoReadyUp.getBoolean();
             //invMove = pInvMove.getBoolean();
+            nuker = pNuker.getBoolean();
+            nukeSnow = pNukeSnow.getBoolean();
+            nukeDirt = pNukeDirt.getBoolean();
+            nukerHeight = pNukerHeight.getInt();
+            nukerDepth = pNukerDepth.getInt();
+            rejoinTime = pRejoinTime.getInt();
             chestFillerItemName = pChestFillerItemName.getString();
             chestFiller6 = pChestFiller6.getBoolean();
         }
@@ -162,6 +186,12 @@ public class ConfigHandler {
             //pCriticals.set(criticals);
             pAutoReadyUp.set(autoReadyUp);
             //pInvMove.set(invMove);
+            pNuker.set(nuker);
+            pNukeSnow.set(nukeSnow);
+            pNukeDirt.set(nukeDirt);
+            pNukerHeight.set(nukerHeight);
+            pNukerDepth.set(nukerDepth);
+            pRejoinTime.set(rejoinTime);
             pChestFillerItemName.set(chestFillerItemName);
             pChestFiller6.set(chestFiller6);
         }

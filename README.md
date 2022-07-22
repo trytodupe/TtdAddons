@@ -38,6 +38,8 @@
 * Legit Speed
 * No Slow
 * hClip
+* Snow Nuker
+* Rejoin Game
 
 **Usage:**
 _() = aliases; <> = required arguments; [] = optional arguments._
@@ -57,8 +59,13 @@ _() = aliases; <> = required arguments; [] = optional arguments._
 * /ttd legitSpeed - toggle legit speed.
 * /ttd noSlow - toggle no slow.
 * /ttd autoReadyUp - toggle auto ready up for skyblock dungeons.
-* /hclip [distance] - hclips 
+* /ttd snowNuker - toggle snow nuker, only works when holding shovel.
+* /ttd snowNukerHeight <height> - set range to break above the player.
+* /ttd snowNukerDepth <depth> - set range to break below the player.
+* Rejoin Game - set keybind in Options -> Controls.
+* /ttd rejoinTime <time> - set rejoin time in milliseconds.
+* /hclip [distance] - clips horizontally
 
 **Todo:**
 * click gui
-* 
+* tunnel miner

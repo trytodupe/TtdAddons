@@ -7,13 +7,14 @@ import com.trytodupe.ttdaddons.features.HeadRotation;
 import com.trytodupe.ttdaddons.features.ChestFiller;
 import com.trytodupe.ttdaddons.features.GhostHand;
 import com.trytodupe.ttdaddons.features.Hitboxes;
-import com.trytodupe.ttdaddons.features.InvMove;
 import com.trytodupe.ttdaddons.features.KeepSprint;
 import com.trytodupe.ttdaddons.features.LegitSpeed;
 import com.trytodupe.ttdaddons.features.ModLess;
 import com.trytodupe.ttdaddons.features.NoJumpDelay;
 import com.trytodupe.ttdaddons.features.NoSlow;
 import com.trytodupe.ttdaddons.features.Reach;
+import com.trytodupe.ttdaddons.features.RejoinGame;
+import com.trytodupe.ttdaddons.features.Nuker;
 import com.trytodupe.ttdaddons.features.SpeedMine;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 import net.minecraft.command.CommandBase;
@@ -147,6 +148,24 @@ public class Commands extends CommandBase {
             case "autoreadyup":
                 AutoReadyUp.toggle();
                 break;
+            case "nuker":
+                Nuker.toggle();
+                break;
+            case "nukesnow":
+                Nuker.toggleSnow();
+                break;
+            case "nukedirt":
+                Nuker.toggleDirt();
+                break;
+            case "nukerheight":
+                Nuker.setHeight(args[1]);
+                break;
+            case "nukerdepth":
+                Nuker.setDepth(args[1]);
+                break;
+            case "rejointime":
+                RejoinGame.setTime(args[1]);
+                break;
             case "fill":
                 switch (args.length) {
                     case (1):
@@ -189,7 +208,15 @@ public class Commands extends CommandBase {
                 "/ttd legitSpeed - toggle legit speed.\n" +
                 "/ttd noSlow - toggle no slow.\n" +
                 "/ttd autoReadyUp - toggle auto ready up.\n" +
+                "/ttd nuker - toggle nuker, only works when holding shovel.\n" +
+                "/ttd nukeSnow - make nuker nukes snow.\n" +
+                "/ttd nukeDirt - make nuker nukes dirt.\n" +
+                "/ttd nukerHeight <&bheight&r> - set range to break above the player.\n" +
+                "/ttd nukerDepth <&bdepth&r> - set range to break below the player.\n" +
+                "Rejoin Game - set keybind in Options -> Controls.\n" +
+                "/ttd rejoinTime <&btime&r> - set rejoin time in milliseconds.\n" +
                 "/hclip [&bdistance&r] - hclips.\n";
+
                 // "/trytodupe fill [&bitem&r] - fill chests with custom item."
                 // "/trytodupe fill6"
     }
