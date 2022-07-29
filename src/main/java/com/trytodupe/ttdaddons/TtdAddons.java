@@ -5,6 +5,7 @@ import com.trytodupe.ttdaddons.features.AutoReadyUp;
 import com.trytodupe.ttdaddons.features.ChestFiller;
 import com.trytodupe.ttdaddons.features.InvMove;
 import com.trytodupe.ttdaddons.features.LegitSpeed;
+import com.trytodupe.ttdaddons.features.NoRotate;
 import com.trytodupe.ttdaddons.features.NoSlow;
 import com.trytodupe.ttdaddons.features.HClip;
 import com.trytodupe.ttdaddons.features.RejoinGame;
@@ -21,11 +22,13 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import java.io.File;
 
+import static com.trytodupe.ttdaddons.config.ConfigHandler.noRotate;
+
 @Mod(modid = TtdAddons.MODID, version = TtdAddons.VERSION)
 public class TtdAddons
 {
     public static final String MODID = "ttdaddons";
-    public static final String VERSION = "0.1.6";
+    public static final String VERSION = "0.1.7";
     private static boolean debug = false;
     public static File configurationFile;
     public static final Minecraft mc = Minecraft.getMinecraft();
@@ -55,6 +58,7 @@ public class TtdAddons
         MinecraftForge.EVENT_BUS.register(new InvMove());
         MinecraftForge.EVENT_BUS.register(new Nuker());
         MinecraftForge.EVENT_BUS.register(new RejoinGame());
+        MinecraftForge.EVENT_BUS.register(new NoRotate());
         // MinecraftForge.EVENT_BUS.register(new TtdAddons());
 
         ClientCommandHandler.instance.registerCommand(new Commands());

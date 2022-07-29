@@ -43,6 +43,8 @@ public class ConfigHandler {
     public static int nukerHeight;
     public static int nukerDepth;
     public static int rejoinTime;
+    public static boolean noRotate;
+    public static boolean autoScatha;
     public static String chestFillerItemName;
     public static boolean chestFiller6;
 
@@ -92,6 +94,8 @@ public class ConfigHandler {
         final Property pNukerHeight = config.get(CATEGORY_TtdAddons, "Nuker Height", 0, "range to break above the player, number between 0 to 5");
         final Property pNukerDepth = config.get(CATEGORY_TtdAddons, "Nuker Depth", 0, "range to break below the player, number between 0 to 3");
         final Property pRejoinTime = config.get(CATEGORY_TtdAddons, "Rejoin Time", 1000, "in milliseconds, number greater than 0");
+        final Property pNoRotate = config.get(CATEGORY_TtdAddons, "No Rotate", false, "#");
+        final Property pAutoScatha = config.get(CATEGORY_TtdAddons, "Auto Scatha", false, "auto mine tunnel");
         final Property pChestFillerItemName = config.get(CATEGORY_TtdAddons, "Chest Filler Item Name", "", "item display name");
         final Property pChestFiller6 = config.get(CATEGORY_TtdAddons, "ChestFiller6", false, "ignore this if you don't know what this is");
 
@@ -125,6 +129,8 @@ public class ConfigHandler {
         TtdAddons.add(pNukerHeight.getName());
         TtdAddons.add(pNukerDepth.getName());
         TtdAddons.add(pRejoinTime.getName());
+        TtdAddons.add(pNoRotate.getName());
+        TtdAddons.add(pAutoScatha.getName());
         TtdAddons.add(pChestFillerItemName.getName());
         TtdAddons.add(pChestFiller6.getName());
         config.setCategoryPropertyOrder(CATEGORY_TtdAddons, TtdAddons);
@@ -159,6 +165,8 @@ public class ConfigHandler {
             nukerHeight = pNukerHeight.getInt();
             nukerDepth = pNukerDepth.getInt();
             rejoinTime = pRejoinTime.getInt();
+            noRotate = pNoRotate.getBoolean();
+            autoScatha = pAutoScatha.getBoolean();
             chestFillerItemName = pChestFillerItemName.getString();
             chestFiller6 = pChestFiller6.getBoolean();
         }
@@ -192,6 +200,8 @@ public class ConfigHandler {
             pNukerHeight.set(nukerHeight);
             pNukerDepth.set(nukerDepth);
             pRejoinTime.set(rejoinTime);
+            pNoRotate.set(noRotate);
+            pAutoScatha.set(autoScatha);
             pChestFillerItemName.set(chestFillerItemName);
             pChestFiller6.set(chestFiller6);
         }

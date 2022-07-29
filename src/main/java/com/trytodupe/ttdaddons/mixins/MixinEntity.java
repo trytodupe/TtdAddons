@@ -2,6 +2,7 @@ package com.trytodupe.ttdaddons.mixins;
 
 
 import net.minecraft.entity.Entity;
+import net.minecraft.util.AxisAlignedBB;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
@@ -39,4 +40,13 @@ public abstract class MixinEntity {
 
     @Shadow
     public float rotationPitch;
+
+    @Shadow
+    public double posX;
+
+    @Shadow
+    public double posZ;
+
+    @Shadow
+    public abstract AxisAlignedBB getEntityBoundingBox();
 }

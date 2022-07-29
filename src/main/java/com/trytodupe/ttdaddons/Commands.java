@@ -11,6 +11,7 @@ import com.trytodupe.ttdaddons.features.KeepSprint;
 import com.trytodupe.ttdaddons.features.LegitSpeed;
 import com.trytodupe.ttdaddons.features.ModLess;
 import com.trytodupe.ttdaddons.features.NoJumpDelay;
+import com.trytodupe.ttdaddons.features.NoRotate;
 import com.trytodupe.ttdaddons.features.NoSlow;
 import com.trytodupe.ttdaddons.features.Reach;
 import com.trytodupe.ttdaddons.features.RejoinGame;
@@ -24,6 +25,7 @@ import net.minecraft.command.ICommandSender;
 import java.util.ArrayList;
 
 import static com.trytodupe.ttdaddons.TtdAddons.mc;
+import static com.trytodupe.ttdaddons.config.ConfigHandler.noRotate;
 
 public class Commands extends CommandBase {
     @Override
@@ -166,6 +168,9 @@ public class Commands extends CommandBase {
             case "rejointime":
                 RejoinGame.setTime(args[1]);
                 break;
+            case "norotate":
+                NoRotate.toggle();
+                break;
             case "fill":
                 switch (args.length) {
                     case (1):
@@ -215,6 +220,7 @@ public class Commands extends CommandBase {
                 "/ttd nukerDepth <&bdepth&r> - set range to break below the player.\n" +
                 "Rejoin Game - set keybind in Options -> Controls.\n" +
                 "/ttd rejoinTime <&btime&r> - set rejoin time in milliseconds.\n" +
+                "/ttd noRotate - toggle no rotate.\n" +
                 "/hclip [&bdistance&r] - hclips.\n";
 
                 // "/trytodupe fill [&bitem&r] - fill chests with custom item."

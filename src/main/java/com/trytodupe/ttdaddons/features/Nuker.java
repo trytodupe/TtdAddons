@@ -1,6 +1,7 @@
 package com.trytodupe.ttdaddons.features;
 
 import com.trytodupe.ttdaddons.config.ConfigHandler;
+import com.trytodupe.ttdaddons.events.EventMotionUpdate;
 import com.trytodupe.ttdaddons.utils.ChatLib;
 import com.trytodupe.ttdaddons.utils.RenderUtils;
 import net.minecraft.block.state.IBlockState;
@@ -13,7 +14,6 @@ import net.minecraft.util.Vec3;
 import net.minecraft.util.Vec3i;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -31,6 +31,7 @@ public class Nuker {
         if (ConfigHandler.nuker) ChatLib.chat("Nuker &aenabled");
         else {
             broken.clear();
+            closestBlock = null;
             ChatLib.chat("Nuker &cdisabled");
         }
     }
@@ -71,32 +72,51 @@ public class Nuker {
         }
     }
 
-    public static void swingItem() {
-        if (mc.objectMouseOver != null && mc.objectMouseOver.entityHit == null) mc.thePlayer.swingItem();
-    }
 
     @SubscribeEvent
-    public void onTick(TickEvent.ClientTickEvent event) {
+    public void onMovePre(EventMotionUpdate.Pre event) {
         if(mc.theWorld == null) return;
         if(mc.thePlayer == null) return;
         if (!ConfigHandler.nuker) return;
         if (mc.thePlayer.getHeldItem() == null || !mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("shovel")) return;
-        ticks++;
         if (broken.size() > 10) broken.clear();
-        if(ticks > 20) {
-            broken.clear();
-            ticks = 0;
-        }
+        if (mc.thePlayer.ticksExisted % 20 == 0) broken.clear();
         closestBlock = closestBlock();
+        if (closestBlock != null) {
+            double diffX = closestBlock.getX() - mc.thePlayer.posX + 0.5;
+            double diffY = closestBlock.getY() - mc.thePlayer.posY + 0.5 - mc.thePlayer.getEyeHeight();
+            double diffZ = closestBlock.getZ() - mc.thePlayer.posZ + 0.5;
+            double dist = Math.sqrt(diffX * diffX + diffZ * diffZ);
+
+            float pitch = (float) -Math.atan2(dist, diffY);
+            float yaw = (float) Math.atan2(diffZ, diffX);
+            pitch = (float) wrapAngleTo180((pitch * 180F / (float) Math.PI + 90) * -1);
+            yaw = (float) wrapAngleTo180((yaw * 180 / (float) Math.PI) - 90);
+            event.pitch = pitch;
+            event.yaw = yaw;
+        }
+    }
+
+    @SubscribeEvent
+    public void onMovePost(EventMotionUpdate.Post event) {
         if (closestBlock != null) {
             MovingObjectPosition fake = mc.objectMouseOver;
             fake.hitVec = new Vec3(closestBlock);
             EnumFacing enumFacing = fake.sideHit;
-            if (enumFacing != null && mc.thePlayer != null)
+            if (enumFacing != null && mc.thePlayer != null) {
                 mc.thePlayer.sendQueue.addToSendQueue(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.START_DESTROY_BLOCK, closestBlock, enumFacing));
-            swingItem();
-            broken.add(closestBlock);
+                swingItem();
+                broken.add(closestBlock);
+            }
         }
+    }
+
+    private static float wrapAngleTo180(float angle) {
+        return (float) (angle - Math.floor(angle / 360 + 0.5) * 360);
+    }
+
+    public static void swingItem() {
+        if (mc.objectMouseOver != null && mc.objectMouseOver.entityHit == null) mc.thePlayer.swingItem();
     }
 
     @SubscribeEvent
@@ -104,8 +124,9 @@ public class Nuker {
         if (!ConfigHandler.nuker) return;
         if (mc.thePlayer.getHeldItem() == null || !mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("shovel")) return;
         closestBlock = closestBlock();
-        if (closestBlock != null) {
-            RenderUtils.drawBlockBox(closestBlock, new Color(128, 128, 128), 3, event.partialTicks);
+        if (closestBlock != null && ticks % 2 == 0) {
+            //RenderUtils.drawBlockBox(closestBlock, new Color(128, 128, 128), 3, event.partialTicks);
+            RenderUtils.drawBlockBox(closestBlock, new Color(255, 64, 236), 3, event.partialTicks);
         }
     }
 

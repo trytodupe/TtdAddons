@@ -40,6 +40,7 @@
 * hClip
 * Snow Nuker
 * Rejoin Game
+* No Rotate
 
 **Usage:**
 _() = aliases; <> = required arguments; [] = optional arguments._
@@ -64,6 +65,7 @@ _() = aliases; <> = required arguments; [] = optional arguments._
 * /ttd snowNukerDepth <depth> - set range to break below the player.
 * Rejoin Game - set keybind in Options -> Controls.
 * /ttd rejoinTime <time> - set rejoin time in milliseconds.
+* /ttd noRotate - toggle no rotate.
 * /hclip [distance] - clips horizontally
 
 **Todo:**

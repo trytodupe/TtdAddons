@@ -15,6 +15,7 @@
     "MixinPlayerSP",
     "MixinRendererLivingEntity",
     "MixinNetworkManager",
-    "AccessorC03PacketPlayer"
+    "AccessorC03PacketPlayer",
+    "MixinPacket"
   ]
 }
