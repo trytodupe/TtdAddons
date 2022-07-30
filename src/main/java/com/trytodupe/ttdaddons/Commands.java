@@ -221,6 +221,7 @@ public class Commands extends CommandBase {
                 "Rejoin Game - set keybind in Options -> Controls.\n" +
                 "/ttd rejoinTime <&btime&r> - set rejoin time in milliseconds.\n" +
                 "/ttd noRotate - toggle no rotate.\n" +
+                "Tunnel Miner - set keybind in Options -> Controls.\n" +
                 "/hclip [&bdistance&r] - hclips.\n";
 
                 // "/trytodupe fill [&bitem&r] - fill chests with custom item."

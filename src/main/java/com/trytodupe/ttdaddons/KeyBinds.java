@@ -1,7 +1,7 @@
 package com.trytodupe.ttdaddons;
 
 import com.trytodupe.ttdaddons.config.ConfigHandler;
-//import com.trytodupe.ttdaddons.features.AutoScatha;
+import com.trytodupe.ttdaddons.features.TunnelMiner;
 import com.trytodupe.ttdaddons.features.LegitSpeed;
 import com.trytodupe.ttdaddons.features.NoSlow;
 import com.trytodupe.ttdaddons.features.RejoinGame;
@@ -19,7 +19,7 @@ public class KeyBinds {
     private final KeyBind noSlow = new KeyBind("No Slow", Keyboard.KEY_NONE);
     private final KeyBind snowNuker = new KeyBind("Nuker", Keyboard.KEY_NONE);
     private final KeyBind rejoinGame = new KeyBind("Rejoin Game", Keyboard.KEY_NONE);
-    //private final KeyBind autoScatha = new KeyBind("Auto Scatha", Keyboard.KEY_NONE);
+    private final KeyBind tunnelMiner = new KeyBind("Tunnel Miner", Keyboard.KEY_NONE);
 
     @SubscribeEvent
     public void onTick(TickEvent.ClientTickEvent event) {
@@ -28,7 +28,7 @@ public class KeyBinds {
         if (noSlow.isPressed()) NoSlow.toggle();
         if (snowNuker.isPressed()) Nuker.toggle();
         if (rejoinGame.isPressed()) RejoinGame.rejoinGame();
-        //if (autoScatha.isPressed()) AutoScatha.toggle();
+        if (tunnelMiner.isPressed()) TunnelMiner.toggle();
         ConfigHandler.saveConfig();
     }
 }

@@ -22,13 +22,14 @@ import static com.trytodupe.ttdaddons.TtdAddons.mc;
 
 public class Nuker {
 
+    private static boolean enable = false;
     private static ArrayList<BlockPos> broken = new ArrayList<>();
     private static BlockPos closestBlock;
     private static int ticks = 0;
 
     public static void toggle() {
-        ConfigHandler.nuker = !ConfigHandler.nuker;
-        if (ConfigHandler.nuker) ChatLib.chat("Nuker &aenabled");
+        enable = !enable;
+        if (enable) ChatLib.chat("Nuker &aenabled");
         else {
             broken.clear();
             closestBlock = null;
@@ -77,7 +78,7 @@ public class Nuker {
     public void onMovePre(EventMotionUpdate.Pre event) {
         if(mc.theWorld == null) return;
         if(mc.thePlayer == null) return;
-        if (!ConfigHandler.nuker) return;
+        if (!enable) return;
         if (mc.thePlayer.getHeldItem() == null || !mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("shovel")) return;
         if (broken.size() > 10) broken.clear();
         if (mc.thePlayer.ticksExisted % 20 == 0) broken.clear();
@@ -121,12 +122,11 @@ public class Nuker {
 
     @SubscribeEvent
     public void renderWorld(RenderWorldLastEvent event) {
-        if (!ConfigHandler.nuker) return;
+        if (!enable) return;
         if (mc.thePlayer.getHeldItem() == null || !mc.thePlayer.getHeldItem().getItem().getUnlocalizedName().contains("shovel")) return;
         closestBlock = closestBlock();
         if (closestBlock != null && ticks % 2 == 0) {
-            //RenderUtils.drawBlockBox(closestBlock, new Color(128, 128, 128), 3, event.partialTicks);
-            RenderUtils.drawBlockBox(closestBlock, new Color(255, 64, 236), 3, event.partialTicks);
+            RenderUtils.drawBlockBox(closestBlock, new Color(128, 128, 128), 3, event.partialTicks);
         }
     }
 
