@@ -16,6 +16,7 @@
     "MixinRendererLivingEntity",
     "MixinNetworkManager",
     "AccessorC03PacketPlayer",
-    "MixinPacket"
+    "MixinPacket",
+    "MixinFontRenderer"
   ]
 }

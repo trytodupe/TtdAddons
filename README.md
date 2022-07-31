@@ -68,6 +68,7 @@ _() = aliases; <> = required arguments; [] = optional arguments._
 * /ttd rejoinTime <time> - set rejoin time in milliseconds.
 * /ttd noRotate - toggle no rotate.
 * Tunnel Miner - set keybind in Options -> Controls.
+* /ttd deobfuscator - remove player name obfuscation before wall falls.
 * /hclip [distance] - clips horizontally
 
 **Todo:**

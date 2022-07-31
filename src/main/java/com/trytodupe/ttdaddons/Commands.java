@@ -3,6 +3,7 @@ package com.trytodupe.ttdaddons;
 import com.trytodupe.ttdaddons.config.ConfigHandler;
 import com.trytodupe.ttdaddons.features.AutoReadyUp;
 import com.trytodupe.ttdaddons.features.CameraClip;
+import com.trytodupe.ttdaddons.features.Deobfuscator;
 import com.trytodupe.ttdaddons.features.HeadRotation;
 import com.trytodupe.ttdaddons.features.ChestFiller;
 import com.trytodupe.ttdaddons.features.GhostHand;
@@ -171,6 +172,9 @@ public class Commands extends CommandBase {
             case "norotate":
                 NoRotate.toggle();
                 break;
+            case "deobfuscator":
+                Deobfuscator.toggle();
+                break;
             case "fill":
                 switch (args.length) {
                     case (1):
@@ -222,6 +226,7 @@ public class Commands extends CommandBase {
                 "/ttd rejoinTime <&btime&r> - set rejoin time in milliseconds.\n" +
                 "/ttd noRotate - toggle no rotate.\n" +
                 "Tunnel Miner - set keybind in Options -> Controls.\n" +
+                "/ttd deobfuscator - remove player name obfuscation before wall falls.\n" +
                 "/hclip [&bdistance&r] - hclips.\n";
 
                 // "/trytodupe fill [&bitem&r] - fill chests with custom item."
