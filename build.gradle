@@ -18,7 +18,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath "com.github.DJtheRedstoner:ForgeGradle:6f53277"
+        classpath "com.github.Debuggingss:ForgeGradle:1d22621"
         classpath "com.github.LxGaming:MixinGradle:d75e32e"
         classpath "com.github.jengelman.gradle.plugins:shadow:6.1.0"
     }
@@ -29,7 +29,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: "com.github.johnrengelman.shadow"
 
-version = "1.8.9-0.1.9"
+version = "1.8.9-0.1.10"
 group= "com.trytodupe.ttdaddons"
 archivesBaseName = "TtdAddons"
 
