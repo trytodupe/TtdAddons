@@ -72,7 +72,8 @@ public class TunnelMiner {
             double diffX = blockToMine.getX() - mc.thePlayer.posX + 0.5;
             double diffY = blockToMine.getY() - mc.thePlayer.posY + 0.5 - mc.thePlayer.getEyeHeight();
             double diffZ = blockToMine.getZ() - mc.thePlayer.posZ + 0.5;
-            double dist = Math.sqrt(diffX * diffX + diffZ * diffZ);
+            double dist = Math.sqrt(diffX * diffX + diffY * diffY + diffZ * diffZ);
+            if (dist <= 2d) KeyBinding.setKeyBindState(mc.gameSettings.keyBindAttack.getKeyCode(), false); //todo: to remove
 
             float pitch = (float) -Math.atan2(dist, diffY);
             float yaw = (float) Math.atan2(diffZ, diffX);
@@ -149,22 +150,22 @@ public class TunnelMiner {
         BlockPos farPos;
         switch (dir) {
             case NORTH:
-                closePos = new BlockPos(Math.floor(mc.thePlayer.posX), Math.floor(mc.thePlayer.posY), Math.floor(mc.thePlayer.posZ - 1d));
+                closePos = new BlockPos(Math.floor(mc.thePlayer.posX), Math.floor(mc.thePlayer.posY), Math.floor(mc.thePlayer.posZ));
                 farPos = new BlockPos(Math.floor(mc.thePlayer.posX), Math.floor(mc.thePlayer.posY + 1), Math.floor(mc.thePlayer.posZ - 4.5d));
                 mc.thePlayer.rotationYaw = (float) wrapAngleTo180(180); //todo: to remove
                 break;
             case EAST:
-                closePos = new BlockPos(Math.floor(mc.thePlayer.posX + 1d), Math.floor(mc.thePlayer.posY), Math.floor(mc.thePlayer.posZ));
+                closePos = new BlockPos(Math.floor(mc.thePlayer.posX), Math.floor(mc.thePlayer.posY), Math.floor(mc.thePlayer.posZ));
                 farPos = new BlockPos(Math.floor(mc.thePlayer.posX + 4.5d), Math.floor(mc.thePlayer.posY + 1), Math.floor(mc.thePlayer.posZ));
                 mc.thePlayer.rotationYaw = (float) wrapAngleTo180(-90); //todo: to remove
                 break;
             case SOUTH:
-                closePos = new BlockPos(Math.floor(mc.thePlayer.posX), Math.floor(mc.thePlayer.posY), Math.floor(mc.thePlayer.posZ + 1d));
+                closePos = new BlockPos(Math.floor(mc.thePlayer.posX), Math.floor(mc.thePlayer.posY), Math.floor(mc.thePlayer.posZ));
                 farPos = new BlockPos(Math.floor(mc.thePlayer.posX), Math.floor(mc.thePlayer.posY + 1), Math.floor(mc.thePlayer.posZ + 4.5d));
                 mc.thePlayer.rotationYaw = (float) wrapAngleTo180(0); //todo: to remove
                 break;
             case WEST:
-                closePos = new BlockPos(Math.floor(mc.thePlayer.posX - 1d), Math.floor(mc.thePlayer.posY), Math.floor(mc.thePlayer.posZ));
+                closePos = new BlockPos(Math.floor(mc.thePlayer.posX), Math.floor(mc.thePlayer.posY), Math.floor(mc.thePlayer.posZ));
                 farPos = new BlockPos(Math.floor(mc.thePlayer.posX - 4.5d), Math.floor(mc.thePlayer.posY + 1), Math.floor(mc.thePlayer.posZ));
                 mc.thePlayer.rotationYaw = (float) wrapAngleTo180(90); //todo: to remove
                 break;
