@@ -12,6 +12,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.input.Keyboard;
 
+import static com.trytodupe.ttdaddons.TtdAddons.mc;
+
 public class KeyBinds {
 
     private final KeyBind legitSpeed = new KeyBind("Legit Speed", Keyboard.KEY_NONE);
