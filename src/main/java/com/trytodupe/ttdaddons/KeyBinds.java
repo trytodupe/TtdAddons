@@ -20,6 +20,8 @@ public class KeyBinds {
     private final KeyBind snowNuker = new KeyBind("Nuker", Keyboard.KEY_NONE);
     private final KeyBind rejoinGame = new KeyBind("Rejoin Game", Keyboard.KEY_NONE);
     private final KeyBind tunnelMiner = new KeyBind("Tunnel Miner", Keyboard.KEY_NONE);
+    private final KeyBind suicide = new KeyBind("/kill", Keyboard.KEY_NONE);
+    
 
     @SubscribeEvent
     public void onTick(TickEvent.ClientTickEvent event) {
@@ -29,6 +31,10 @@ public class KeyBinds {
         if (snowNuker.isPressed()) Nuker.toggle();
         if (rejoinGame.isPressed()) RejoinGame.rejoinGame();
         if (tunnelMiner.isPressed()) TunnelMiner.toggle();
+        if (suicide.isPressed()) {
+            if (mc.thePlayer == null) return;
+            mc.thePlayer.sendChatMessage("/kill");
+            }
         ConfigHandler.saveConfig();
     }
 }
